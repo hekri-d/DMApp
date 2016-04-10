@@ -55,30 +55,127 @@ Rectangle {
     }
 
 
-    signal indexSignal;
-
-    onIndexSignal: {
-        if(vrimaShkronja.currentIndex === 10 && vrimaLartesia.currentIndex <6) {
-            vrimaLartesia.currentIndex =6
-        }
-
-        else if(vrimaShkronja.currentIndex === 10 && vrimaLartesia.currentIndex >8){
-            vrimaLartesia.currentIndex =8
-        }
-    }
-
 
 
 
     ComboBox {
         id: vrimaShkronja
         anchors.left: diametriVendosjes.right
-        anchors.leftMargin: 10
+        anchors.leftMargin: 5
         anchors.verticalCenter: diametriVendosjes.verticalCenter
-        width: 40
+        width: 50
         model: ["A","B","C","D","E","F","G","H","J","K","M","N","P","R","S","T","U","V","X","Y","Z","ZA","ZB","ZC"]
 
-        onCurrentIndexChanged: indexSignal()
+        onCurrentIndexChanged: kufizimiCilesiseVrimaSignal()
+    }
+
+
+/* kufizon numrin (lartesine e fushes toleruese).
+D.m.th. nuk lejon qe te shfaqet lartesi toleruese per fushe qe nuk ekzison.
+P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
+    signal kufizimiCilesiseVrimaSignal;
+
+
+    onKufizimiCilesiseVrimaSignal: {
+
+        switch (vrimaShkronja.currentIndex) {
+        case 0:     //A
+            if(vrimaLartesia.currentIndex <2){ vrimaLartesia.currentIndex =2 }
+            break;
+        case 1:     //B
+            if(vrimaLartesia.currentIndex <2){ vrimaLartesia.currentIndex =2 }
+            break;
+        case 2:     //C
+            if(vrimaLartesia.currentIndex <2){ vrimaLartesia.currentIndex =2 }
+            break;
+        case 3:     //D
+            if(vrimaLartesia.currentIndex <2){ vrimaLartesia.currentIndex =2 }
+            break;
+        case 4:     //E
+            if(vrimaLartesia.currentIndex <2){ vrimaLartesia.currentIndex =2 }
+            break;
+
+        case 5:     //F
+            if(vrimaLartesia.currentIndex <2){ vrimaLartesia.currentIndex =2 }
+            break;
+        case 6:     //G
+            if(vrimaLartesia.currentIndex <2){ vrimaLartesia.currentIndex =2 }
+            break;
+        case 7:     //H
+            if(vrimaLartesia.currentIndex <2){ vrimaLartesia.currentIndex =2 }
+            break;
+        case 8:     //J
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            break;
+        case 9:     //K
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+
+        case 10:    //M
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 11:    //N
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 12:    //P
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 13:    //R
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 14:    //S
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+
+        case 15:    //T
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 16:    //U
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 17:    //V
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 18:    //X
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 19:    //Y
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+
+        case 20:    //Z
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 21:    //ZA
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 22:    //ZB
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+        case 23:    //ZC
+            if(vrimaLartesia.currentIndex <6){ vrimaLartesia.currentIndex =6 }
+            else if(vrimaLartesia.currentIndex >11) {vrimaLartesia.currentIndex = 11 }
+            break;
+
+
+
+    }
+
+
     }
 
 
@@ -88,12 +185,12 @@ Rectangle {
     ComboBox {
         id: vrimaLartesia
         anchors.left: vrimaShkronja.right
-        anchors.leftMargin: 10
+        anchors.leftMargin: 5
         anchors.verticalCenter: diametriVendosjes.verticalCenter
         width: 50
         model: 19
 
-        onCurrentIndexChanged: indexSignal()
+        onCurrentIndexChanged: kufizimiCilesiseVrimaSignal()
     }
 
 
@@ -110,20 +207,133 @@ Rectangle {
     ComboBox {
         id: aksiShkronja
         anchors.left: fraksion.right
-        anchors.leftMargin: 10
-        width: 40
+        anchors.leftMargin: 5
+        width: 50
         model: ["a","b","c","d","e","f","g","h","j","k","m","n","p","r","s","t","u","v","x","y","z","za","zb","zc"]
         anchors.verticalCenter: diametriVendosjes.verticalCenter
 
+        onCurrentIndexChanged: kufizimiCilesiseAksiSignal()
+
     }
+
+
+    /* kufizon numrin (lartesine e fushes toleruese).
+    D.m.th. nuk lejon qe te shfaqet lartesi toleruese e cila nuk ekziston per fushe te caktuar.
+    P.sh. nuk lejon qe ne UI te shfaqet r12 (apo numer me i madh se 12) sepse lartesia maksimale per r eshte 11 */
+        signal kufizimiCilesiseAksiSignal;
+
+
+        onKufizimiCilesiseAksiSignal: {
+
+            switch (aksiShkronja.currentIndex) {
+            case 0:     //a
+                if(aksiLartesia.currentIndex <1){ aksiLartesia.currentIndex =1 }
+                break;
+            case 1:     //b
+                if(aksiLartesia.currentIndex <1){ aksiLartesia.currentIndex =1 }
+                break;
+            case 2:     //c
+                if(aksiLartesia.currentIndex <1){ aksiLartesia.currentIndex =1 }
+                break;
+            case 3:     //d
+                if(aksiLartesia.currentIndex <1){ aksiLartesia.currentIndex =1 }
+                break;
+            case 4:     //e
+                if(aksiLartesia.currentIndex <1){ aksiLartesia.currentIndex =1 }
+                break;
+
+            case 5:     //f
+                if(aksiLartesia.currentIndex <1){ aksiLartesia.currentIndex =1 }
+                break;
+            case 6:     //g
+                if(aksiLartesia.currentIndex <1){ aksiLartesia.currentIndex =1 }
+                break;
+            case 7:     //h
+                if(aksiLartesia.currentIndex <1){ aksiLartesia.currentIndex =1 }
+                break;
+            case 8:     //j
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                break;
+            case 9:     //k
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                break;
+
+            case 10:    //m
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 11:    //n
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 12:    //p
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 13:    //r
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 14:    //s
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+
+            case 15:    //t
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 16:    //u
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 17:    //v
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 18:    //x
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 19:    //y
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+
+            case 20:    //z
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 21:    //za
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 22:    //zc
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+            case 23:    //zc
+                if(aksiLartesia.currentIndex <5){ aksiLartesia.currentIndex =5 }
+                else if(aksiLartesia.currentIndex >11) {aksiLartesia.currentIndex = 11 }
+                break;
+
+
+
+        }
+
+
+        }
+
 
     ComboBox {
         id: aksiLartesia
         anchors.left: aksiShkronja.right
-        anchors.leftMargin: 10
+        anchors.leftMargin: 5
         anchors.verticalCenter: diametriVendosjes.verticalCenter
         width: 50
         model: 19
+
+        onCurrentIndexChanged: kufizimiCilesiseAksiSignal()
     }
 
 
@@ -729,11 +939,11 @@ Rectangle {
 
                         function diamtratVerteteVrima() {
                             if( diametriDvInput.text <= parseFloat(diametriDeVlerat.text) && diametriDvInput.text >=parseFloat(diametriDpVlera.text) ){
-                                return "Dv - Mire"
+                                return "Dv - per. e mire"
                             }
 
                             else if(diametriDvInput.text >= parseFloat(diametriDeVlerat.text)  ){
-                                    return "Dv - Keqe"
+                                    return "Dv - per. e keqe"
                             }
 
                             else if(diametriDvInput.text < parseFloat(diametriDpVlera.text)  ){
@@ -767,6 +977,10 @@ Rectangle {
 
                         if(parseFloat(hapesiraHpVlera.text) <= 0) {
                             hapesiraHp.text = "Ie = "
+                        }
+
+                        if(parseFloat(hapesiraHeVlera.text) <= 0) {
+                            hapesiraHe.text = "Ip = "
                         }
 
 
