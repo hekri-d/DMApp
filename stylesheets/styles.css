@@ -771,7 +771,7 @@ dt {
   margin-left: 0px;
 }
 #header nav li.downloads {
-  float: right;
+  float: left;   //It was right
   margin-left: 26px;   //my shit. It was 6
 }
 
