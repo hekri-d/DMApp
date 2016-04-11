@@ -6,9 +6,6 @@ import QtQuick.Layouts 1.1
 
 Rectangle {
     id: vendosjet
-    //    visible: true
-    //    width: 340
-    //    height: 460
     color: "#2b2b2b"
 
 

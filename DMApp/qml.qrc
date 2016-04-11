@@ -9,5 +9,6 @@
         <file>exit.svg</file>
         <file>arrow-down.png</file>
         <file>ok.png</file>
+        <file>phi.png</file>
     </qresource>
 </RCC>

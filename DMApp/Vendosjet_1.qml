@@ -4,10 +4,6 @@ import QtQuick.Controls.Styles 1.3
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 
-import QtQuick.Controls.Styles.Flat 1.0 as Flat
-import QtQuick.Extras 1.4
-import QtQuick.XmlListModel 2.0
-
 import "js/Tabela2.1.js" as Tabela2_1JS
 import "js/Tabela2.5.js" as Tabela2_5JS
 import "js/Tabela2.4.js" as Tabela2_4JS
@@ -16,6 +12,15 @@ Rectangle {
     id:vendosjet1
     color: "teal"
 
+    Rectangle {
+        id: topRect
+        width: parent.width
+        height: parent.height/15
+        color: "red"
+        anchors.horizontalCenter: parent.horizontalCenter
+        visible: false
+
+    }
 
     Text {
         id: vendosja
@@ -24,29 +29,45 @@ Rectangle {
         anchors.leftMargin: 10
         anchors.top: parent.top
         anchors.topMargin: 5
-        //        color: "steelblue"
-        font.pixelSize: 16
-        //        font.bold: true
+        font.pixelSize: topRect.height*0.6
     }
 
 
 
-
-    ComboBox {
-        id: diametriVendosjes
+    Image {
+        id: fi
+        source: "qrc:/phi.png"
         anchors.left: vendosja.left
         anchors.top: vendosja.bottom
         anchors.topMargin: 7
-        width: 80
-        height:30
-        model: 501
-        editable: true
+        width: height
+        fillMode: Image.PreserveAspectFit
+        height: topRect.height
+        mipmap: true
 
-        //        on
+        Rectangle {
+            anchors.fill: parent
+            color: "lightblue"
+            z:-1
+        }
+
+    }
+
+    SpinBox {
+        id: diametriVendosjes
+        anchors.left: fi.right
+        anchors.top: vendosja.bottom
+        anchors.topMargin: 7
+        width: topRect.width/4.7
+        height:topRect.height
+        minimumValue: 1
+        maximumValue: 500
+
+        font.pixelSize: topRect.height*0.58
 
         Layout.fillWidth: true
 
-        style: ComboBoxStyle {
+        style: SpinBoxStyle {
             background: Rectangle {
                 color: "lightblue"
             }
@@ -63,10 +84,18 @@ Rectangle {
         anchors.left: diametriVendosjes.right
         anchors.leftMargin: 5
         anchors.verticalCenter: diametriVendosjes.verticalCenter
-        width: 50
+        width: topRect.width/7.5
+        height: topRect.height
         model: ["A","B","C","D","E","F","G","H","J","K","M","N","P","R","S","T","U","V","X","Y","Z","ZA","ZB","ZC"]
 
         onCurrentIndexChanged: kufizimiCilesiseVrimaSignal()
+
+
+        style: ComboBoxStyle {
+            background: Rectangle {
+                color: "lightblue"
+            }
+        }
     }
 
 
@@ -187,20 +216,30 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.left: vrimaShkronja.right
         anchors.leftMargin: 5
         anchors.verticalCenter: diametriVendosjes.verticalCenter
-        width: 50
+        width: topRect.width/7.5
+        height: topRect.height
         model: 19
 
         onCurrentIndexChanged: kufizimiCilesiseVrimaSignal()
+
+        style: ComboBoxStyle {
+            background: Rectangle {
+                color: "lightblue"
+            }
+        }
+
     }
 
 
 
-    Text { font.pixelSize: 16
+    Text {
         id: fraksion
         text: qsTr("/")
         anchors.left: vrimaLartesia.right
         anchors.leftMargin: 10
         anchors.verticalCenter: diametriVendosjes.verticalCenter
+
+        font.pixelSize: topRect.height*0.6
     }
 
 
@@ -208,11 +247,20 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         id: aksiShkronja
         anchors.left: fraksion.right
         anchors.leftMargin: 5
-        width: 50
+        width: topRect.width/7.5
+        height: topRect.height
+
         model: ["a","b","c","d","e","f","g","h","j","k","m","n","p","r","s","t","u","v","x","y","z","za","zb","zc"]
         anchors.verticalCenter: diametriVendosjes.verticalCenter
 
         onCurrentIndexChanged: kufizimiCilesiseAksiSignal()
+
+        style: ComboBoxStyle {
+            background: Rectangle {
+                color: "lightblue"
+            }
+        }
+
 
     }
 
@@ -330,17 +378,27 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.left: aksiShkronja.right
         anchors.leftMargin: 5
         anchors.verticalCenter: diametriVendosjes.verticalCenter
-        width: 50
+        width: topRect.width/7.5
+        height: topRect.height
         model: 19
 
         onCurrentIndexChanged: kufizimiCilesiseAksiSignal()
+
+        style: ComboBoxStyle {
+            background: Rectangle {
+                color: "lightblue"
+            }
+        }
+
+
+
     }
 
 
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametriDv
         text: qsTr("Diametri Dv: ")
         anchors.left: parent.left
@@ -349,17 +407,29 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.topMargin: 20
     }
 
-    TextField {
+    TextInput {
         id: diametriDvInput
         anchors.left: diametriDv.right
         anchors.leftMargin: 10
         anchors.verticalCenter: diametriDv.verticalCenter
         anchors.right: diametriDvNjesia.left
         anchors.rightMargin: 10
+
+        height: topRect.height*0.85
+
+        font.pixelSize: topRect.height*0.6
+
+        Rectangle {
+            anchors.fill: parent
+            color: "lightblue"
+            z:-1
+
+            anchors.leftMargin: -5; anchors.rightMargin: -5
+        }
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametriDvNjesia
         text: qsTr("mm")
         anchors.right: parent.right
@@ -369,7 +439,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametridv
         text: qsTr("Diametri dv: ")
         anchors.left: parent.left
@@ -378,17 +448,28 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.topMargin: 10
     }
 
-    TextField {
+    TextInput {
         id: diametridvInput
         anchors.left: diametridv.right
         anchors.leftMargin: 10
         anchors.verticalCenter: diametridv.verticalCenter
         anchors.right: diametridvNjesia.left
         anchors.rightMargin: 10
+        height: topRect.height*0.83
+
+        font.pixelSize: topRect.height*0.6
+
+        Rectangle {
+            anchors.fill: parent
+            color: "lightblue"
+            z:-1
+
+            anchors.leftMargin: -5; anchors.rightMargin: -5
+        }
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametridvNjesia
         text: qsTr("mm")
         anchors.right: parent.right
@@ -419,7 +500,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: tolerancat
         text: qsTr("Tolerancat(mikrometra):")
         anchors.left: parent.left
@@ -439,7 +520,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: tolerancaT
         text: qsTr("T = ")
         anchors.left: tolerancat.left
@@ -447,7 +528,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: vleraT
         text: qsTr("43")
         anchors.left: tolerancaT.right
@@ -458,7 +539,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: toleranca
         text: qsTr("t = ")
         anchors.left: vleraT.right
@@ -467,7 +548,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: vlerat
         text: qsTr("43")
         anchors.left: toleranca.right
@@ -476,7 +557,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: tolerancaTn
         text: qsTr("Tn = ")
         anchors.left: vlerat.right
@@ -485,7 +566,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: vleraTn
         text: qsTr("43")
         anchors.left: tolerancaTn.right
@@ -496,7 +577,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: permasatKufitare
         text: qsTr("Permasat Kufitare")
         anchors.left: tolerancat.left
@@ -517,7 +598,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametriDe
         text: qsTr("Diametri De: ")
         anchors.left: permasatKufitare.left
@@ -525,7 +606,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.topMargin: 5
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametriDeVlerat
         text: "fuck the cups"
         anchors.left: diametriDe.right
@@ -536,7 +617,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametriDeNjesia
         text: qsTr("mm")
         anchors.right: parent.right
@@ -546,7 +627,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametriDp
         text: qsTr("Diametri Dp: ")
         anchors.left: permasatKufitare.left
@@ -554,7 +635,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.topMargin: 5
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametriDpVlera
         text: "fuck the cups"
         anchors.left: diametriDp.right
@@ -565,7 +646,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametriDpNjesia
         text: qsTr("mm")
         anchors.right: parent.right
@@ -580,7 +661,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametride
         text: qsTr("Diametri de: ")
         anchors.left: permasatKufitare.left
@@ -588,7 +669,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.topMargin: 10
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametrideVlerat
         text: "fuck the cups"
         anchors.left: diametride.right
@@ -599,7 +680,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametrideNjesia
         text: qsTr("mm")
         anchors.right: parent.right
@@ -609,7 +690,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametridp
         text: qsTr("Diametri dp: ")
         anchors.left: permasatKufitare.left
@@ -617,7 +698,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.topMargin: 5
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametridpVlera
         text: "fuck the cups"
         anchors.left: diametridp.right
@@ -628,7 +709,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: diametridpNjesia
         text: qsTr("mm")
         anchors.right: parent.right
@@ -643,7 +724,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     // hapesirat
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: hapesiraHe
         text: qsTr("He =")
         anchors.left: tolerancat.left
@@ -651,7 +732,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.topMargin: 5
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: hapesiraHeVlera
         text: qsTr("---")
         anchors.left: hapesiraHe.right
@@ -662,7 +743,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: hapesiraHeNjesia
         text: qsTr("mm")
         anchors.left: hapesiraHeVlera.right
@@ -672,7 +753,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: hapesiraHp
         text: qsTr("Hp =")
         anchors.left: tolerancat.left
@@ -680,7 +761,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.topMargin: 5
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: hapesiraHpVlera
         text: qsTr("---")
         anchors.left: hapesiraHe.right
@@ -690,7 +771,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     }
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: hapesiraHpNjesia
         text: qsTr("mm")
         anchors.left: hapesiraHpVlera.right
@@ -701,7 +782,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: dDv
         text: qsTr("Dv: permiresohet")
         anchors.left: hapesiraHeNjesia.right
@@ -709,7 +790,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.verticalCenter: hapesiraHeNjesia.verticalCenter
     }
 
-    Text { font.pixelSize: 16
+    Text { font.pixelSize: topRect.height*0.6
         id: ddv
         text: qsTr("dv: e keqe")
         anchors.left: dDv.left
@@ -733,7 +814,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.margins: 4
-        height: parent.height/9
+        height: topRect.height*1.2
         color: "teal"
 
         RowLayout {
@@ -823,10 +904,10 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
                         vleraT.text = Tabela2_1JS.getValues(vrimaLartesia.currentIndex,
-                                                            diametriVendosjes.currentIndex)
+                                                            diametriVendosjes.value)
 
                         vlerat.text = Tabela2_1JS.getValues(aksiLartesia.currentIndex,
-                                                            diametriVendosjes.currentIndex)
+                                                            diametriVendosjes.value)
 
                         vleraTn.text = parseFloat(vleraT.text) + parseFloat(vlerat.text);
 
@@ -841,16 +922,16 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                         function shmangiaES( ){
 
                             if(vrimaShkronja.currentIndex <= 7){
-                                return ES= Tabela2_5JS.getDeviationHole(diametriVendosjes.currentIndex,
+                                return ES= Tabela2_5JS.getDeviationHole(diametriVendosjes.value,
                                                                      vrimaShkronja.currentIndex,
                                                                      vrimaLartesia.currentIndex) +
                                         (Tabela2_1JS.getValues(vrimaLartesia.currentIndex,
-                                                                            diametriVendosjes.currentIndex)/1000)
+                                                                            diametriVendosjes.value)/1000)
 
                                  }
 
                             else {
-                                return ES = Tabela2_5JS.getDeviationHole(diametriVendosjes.currentIndex,
+                                return ES = Tabela2_5JS.getDeviationHole(diametriVendosjes.value,
                                                                     vrimaShkronja.currentIndex,
                                                                     vrimaLartesia.currentIndex);
 
@@ -862,19 +943,19 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                         function shmangiaEI () {
 
                             if(vrimaShkronja.currentIndex <= 7){
-                              return EI = Tabela2_5JS.getDeviationHole(diametriVendosjes.currentIndex, vrimaShkronja.currentIndex,vrimaLartesia.currentIndex);
+                              return EI = Tabela2_5JS.getDeviationHole(diametriVendosjes.value, vrimaShkronja.currentIndex,vrimaLartesia.currentIndex);
                             }
 
                             else {
-                                return EI = Tabela2_5JS.getDeviationHole(diametriVendosjes.currentIndex, vrimaShkronja.currentIndex,vrimaLartesia.currentIndex) - ((Tabela2_1JS.getValues(vrimaLartesia.currentIndex, diametriVendosjes.currentIndex))/1000) ;
+                                return EI = Tabela2_5JS.getDeviationHole(diametriVendosjes.value, vrimaShkronja.currentIndex,vrimaLartesia.currentIndex) - ((Tabela2_1JS.getValues(vrimaLartesia.currentIndex, diametriVendosjes.value))/1000) ;
 
                             }
                         }
 
 
 
-                        diametriDeVlerat.text = diametriVendosjes.currentIndex + shmangiaES() ;
-                        diametriDpVlera.text = diametriVendosjes.currentIndex + shmangiaEI() ;
+                        diametriDeVlerat.text = diametriVendosjes.value + shmangiaES() ;
+                        diametriDpVlera.text = diametriVendosjes.value + shmangiaEI() ;
 
 
 
@@ -883,7 +964,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
                             if(aksiShkronja.currentIndex <= 7){
 
-                                return es = Tabela2_4JS.getDeviationAxis(diametriVendosjes.currentIndex,
+                                return es = Tabela2_4JS.getDeviationAxis(diametriVendosjes.value,
                                                                     aksiShkronja.currentIndex,
                                                                     aksiLartesia.currentIndex);
 
@@ -891,11 +972,11 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
                             else {
 
-                                return  es = Tabela2_4JS.getDeviationAxis(diametriVendosjes.currentIndex,
+                                return  es = Tabela2_4JS.getDeviationAxis(diametriVendosjes.value,
                                                                      aksiShkronja.currentIndex,
                                                                      aksiLartesia.currentIndex) +
                                         (Tabela2_1JS.getValues(aksiLartesia.currentIndex,
-                                                                            diametriVendosjes.currentIndex)/1000)
+                                                                            diametriVendosjes.value)/1000)
                             }
 
 
@@ -906,17 +987,17 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                             if(aksiShkronja.currentIndex <= 7){
                                  console.log("ei eshte: ",ei);
 
-                                return ei = Tabela2_4JS.getDeviationAxis(diametriVendosjes.currentIndex,
+                                return ei = Tabela2_4JS.getDeviationAxis(diametriVendosjes.value,
                                                                          aksiShkronja.currentIndex,
                                                                                 aksiLartesia.currentIndex) -
                                                  ((Tabela2_1JS.getValues(aksiLartesia.currentIndex,
-                                                                         diametriVendosjes.currentIndex))/1000);
+                                                                         diametriVendosjes.value))/1000);
                             }
 
                             else {
 
 
-                                ei = Tabela2_4JS.getDeviationAxis(diametriVendosjes.currentIndex,
+                                ei = Tabela2_4JS.getDeviationAxis(diametriVendosjes.value,
                                                                     aksiShkronja.currentIndex,
                                                                     aksiLartesia.currentIndex);
                                 console.log("ei eshte asdf: ",ei);
@@ -926,9 +1007,9 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                             }
                         }
 
-                        diametrideVlerat.text = diametriVendosjes.currentIndex + shmangia_es()
+                        diametrideVlerat.text = diametriVendosjes.value + shmangia_es()
 
-                        diametridpVlera.text = diametriVendosjes.currentIndex+ shmangia_ei()
+                        diametridpVlera.text = diametriVendosjes.value+ shmangia_ei()
 
 //                        vendosja.text = diametridvInput.text
 
