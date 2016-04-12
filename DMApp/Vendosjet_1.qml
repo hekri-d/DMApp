@@ -903,10 +903,10 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                     onClicked: {
 
 
-                        vleraT.text = Tabela2_1JS.getValues(vrimaLartesia.currentIndex,
+                        vleraT.text = Tabela2_1JS.getTolerancen(vrimaLartesia.currentIndex,
                                                             diametriVendosjes.value)
 
-                        vlerat.text = Tabela2_1JS.getValues(aksiLartesia.currentIndex,
+                        vlerat.text = Tabela2_1JS.getTolerancen(aksiLartesia.currentIndex,
                                                             diametriVendosjes.value)
 
                         vleraTn.text = parseFloat(vleraT.text) + parseFloat(vlerat.text);
@@ -925,7 +925,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                                 return ES= Tabela2_5JS.getDeviationHole(diametriVendosjes.value,
                                                                      vrimaShkronja.currentIndex,
                                                                      vrimaLartesia.currentIndex) +
-                                        (Tabela2_1JS.getValues(vrimaLartesia.currentIndex,
+                                        (Tabela2_1JS.getTolerancen(vrimaLartesia.currentIndex,
                                                                             diametriVendosjes.value)/1000)
 
                                  }
@@ -947,7 +947,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                             }
 
                             else {
-                                return EI = Tabela2_5JS.getDeviationHole(diametriVendosjes.value, vrimaShkronja.currentIndex,vrimaLartesia.currentIndex) - ((Tabela2_1JS.getValues(vrimaLartesia.currentIndex, diametriVendosjes.value))/1000) ;
+                                return EI = Tabela2_5JS.getDeviationHole(diametriVendosjes.value, vrimaShkronja.currentIndex,vrimaLartesia.currentIndex) - ((Tabela2_1JS.getTolerancen(vrimaLartesia.currentIndex, diametriVendosjes.value))/1000) ;
 
                             }
                         }
@@ -975,7 +975,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                                 return  es = Tabela2_4JS.getDeviationAxis(diametriVendosjes.value,
                                                                      aksiShkronja.currentIndex,
                                                                      aksiLartesia.currentIndex) +
-                                        (Tabela2_1JS.getValues(aksiLartesia.currentIndex,
+                                        (Tabela2_1JS.getTolerancen(aksiLartesia.currentIndex,
                                                                             diametriVendosjes.value)/1000)
                             }
 
@@ -990,7 +990,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                                 return ei = Tabela2_4JS.getDeviationAxis(diametriVendosjes.value,
                                                                          aksiShkronja.currentIndex,
                                                                                 aksiLartesia.currentIndex) -
-                                                 ((Tabela2_1JS.getValues(aksiLartesia.currentIndex,
+                                                 ((Tabela2_1JS.getTolerancen(aksiLartesia.currentIndex,
                                                                          diametriVendosjes.value))/1000);
                             }
 
@@ -1098,9 +1098,16 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                 }
             }
 
+
+
+
         }
 
+
+
     }
+
+
 
 
 

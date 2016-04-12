@@ -23,9 +23,12 @@ var tabela2_1 = [   [ 0.3, 0.4, 0.4, 0.5, 0.6, 0.6, 0.8, 1, 1.2, 2, 2.5, 3, 5],
                 ]
 
 
-function getValues (cilesia, diametri){
 
-     var toleranca=0;
+
+//returns vlerat e nga tabela per diameter dhe cilesi te dhene
+function getTolerancen (cilesia, diametri){
+
+    var toleranca=0;
     var diam = parseFloat(diametri);
     var cilesi = parseFloat(cilesia);
 
@@ -48,12 +51,61 @@ function getValues (cilesia, diametri){
     else if(diam >315 && diam <=400) { diam = 11; }
     else if(diam >400 && diam <=500) { diam = 12; }
 
-          toleranca = tabela2_1[cilesi][diam];
+    toleranca = tabela2_1[cilesi][diam];
 
     return toleranca;
 
+}
 
+
+
+/* T_tPaPershtatur --> toleranca jo standarde (e pa pershtatur) qe vjen e llogaritur nga inputi */
+
+function cilesiaFushesToleruese (diametri, T_tPaPershtatur ){
+
+//    var T_tStandarde = 0;
+    var cilesia;
+
+
+    var diam = parseFloat(diametri);
+
+    if (diam<=3) { diam = 0;}
+    else if(diam >6 && diam <=10) { diam = 2; }
+    else if(diam >10 && diam <=18) { diam = 3; }
+    else if(diam >18 && diam <=30) { diam = 4; }
+    else if(diam >30 && diam <=50) { diam = 5; }
+    else if(diam >50 && diam <=80) { diam = 6; }
+    else if(diam >80 && diam <=120) { diam = 7; }
+    else if(diam >120 && diam <=180) { diam = 8; }
+    else if(diam >180 && diam <=250) { diam = 9; }
+    else if(diam >250 && diam <=315) { diam = 10; }
+    else if(diam >315 && diam <=400) { diam = 11; }
+    else if(diam >400 && diam <=500) { diam = 12; }
+
+
+    var i=19;
+
+    while (i>=0) {
+
+
+            if(tabela2_1[i][diam] <= T_tPaPershtatur ) {
+//                T_tStandarde = tabela2_1[i][diam];
+
+                cilesia = i-1;
+
+                break;
+
+            }
+
+            i--;
+
+    }
+
+    return cilesia;
+
+/*TODO: ME KTHY EDHE SHKRONJEN EDHE VLEREN E TOLERANCES SI OBJECTS NE VEND SE ME SHFRYTEZU FUNKSIONIN E DYTE */
 
 
 }
+
 
