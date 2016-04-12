@@ -399,6 +399,31 @@ Text {
 
 
 
+        Text {
+            id: vText
+            text: qsTr("Vendosja standarde është")
+            font.pixelSize: topRect.height*0.6
+            anchors.top: vijaNdarese.bottom
+            anchors.topMargin: 5
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Rectangle {
+            color: "lightblue"
+            width: topRect.width/1.5
+            height: topRect.height/1.3
+            anchors.top: vText.bottom
+            anchors.topMargin: 5
+            anchors.horizontalCenter: vText.horizontalCenter
+
+            Text {
+                id: vendosjaDisplay
+                text: "diametriNominalInput.text +"
+                anchors.centerIn: parent
+                font.pixelSize: topRect.height*0.6
+            }
+        }
+
 
 
 
@@ -407,12 +432,6 @@ Text {
 
 
 
-    Text {
-        id: test
-        text: qsTr("text")
-        font.pixelSize: 30
-        anchors.centerIn: parent
-    }
 
 
 
@@ -553,8 +572,13 @@ Text {
                         var es = Tabela2_4JS.esGetShkronjen(esKufiriPoshtem, esKUfiriEperm,
                                                           diametriNominalInput.text);
 
+                        var llojiVendosjes = function(){
+                            if(stppbRadioButton.checked){
+                            llojiVendosjes = "H"
+                        } else llojiVendosjes = "J" }
 
-                        test.text = "Vendosja eshte: " +diametriNominalInput.text + "H"
+
+                        vendosjaDisplay.text =diametriNominalInput.text + llojiVendosjes
                         +cilesiaVrima +" / "+es+cilesiaAksi;
 
 
