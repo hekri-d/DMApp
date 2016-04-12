@@ -4,6 +4,7 @@ import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
 
 import "js/Tabela2.1.js" as Tabela2_1JS
+import "js/Tabela2.4.js" as Tabela2_4JS
 
 Item {
 
@@ -54,6 +55,8 @@ Item {
             height: topRect.height*0.85
 
             font.pixelSize: topRect.height*0.6
+
+            focus: true
 
             Rectangle {
                 anchors.fill: parent
@@ -167,8 +170,8 @@ Item {
 
         GroupBox {
             id: vendosjaRadioButtonsGroupBox
-            anchors.top: hMin.bottom
-            anchors.topMargin: 20
+            anchors.top: diametriNominal.bottom
+            anchors.topMargin: topRect.height/10
             width: topRect.width/3.8
             height: topRect*2
 
@@ -179,8 +182,7 @@ Item {
 
             ColumnLayout {
                 id: column
-                spacing: 20
-
+                spacing: topRect.height/4
 
                 RadioButton {
                     id: stppbRadioButton
@@ -220,11 +222,6 @@ Item {
                     }
                 }
 
-                //        anchors.leftMargin: 150
-                //        anchors.top:vendosjaRadioButtonsGroupBox.top
-                //        anchors.verticalCenter: parent.verticalCenter
-                //        anchors.horizontalCenter: parent.horizontalCenter
-                //        anchors.horizontalCenterOffset:
 
                 RadioButton {
                     id: stppjRadioButton
@@ -273,13 +270,39 @@ Item {
 
 
 
+        Text {
+            id: pjesemarrjaTolerancave
+            text: qsTr("Pjesemarrja e tol. ne vendosje")
+            anchors.left: vendosjaRadioButtonsGroupBox.right
+            anchors.leftMargin: 10
+            anchors.top: diametriNominalInput.bottom
+            anchors.topMargin: 5
+
+            font.pixelSize: topRect.height*0.6
+
+        }
+
+
+/*  Teksti nga ana e majte e slider-it T */
+
+        Text {
+            id: slT
+            text: qsTr("T_pr=" + sliderTnT.value.toFixed(2))
+            anchors.left: vendosjaRadioButtonsGroupBox.right
+            anchors.leftMargin: 20
+//            anchors.top: diametriNominalInput.bottom
+            anchors.top: pjesemarrjaTolerancave.bottom
+            anchors.topMargin: 5
+
+            font.pixelSize: topRect.height*0.6
+
+        }
 
 Rectangle {
-    id: slreckt
-    anchors.left: vendosjaRadioButtonsGroupBox.right
-    anchors.leftMargin: 20
-    anchors.top: vijaNdarese.bottom
-    anchors.topMargin: 20
+    id: sliderReckt
+    anchors.left: slT.left
+    anchors.top: slT.bottom
+    anchors.topMargin: 10
     width: topRect.width/1.5
     color: "orange"
     height: topRect.height/3
@@ -290,55 +313,51 @@ Rectangle {
         anchors.right: parent.right
         width: parent.width/2
         anchors.bottom: parent.bottom
-    }
+   }
 
-    Rectangle {
-        height: parent.height
-        color: "orange"
-        anchors.left: parent.left
-        width: slreckt.width *sliderTnT.value
-        anchors.bottom: parent.bottom
-        z:100
 
-    }
 
     Slider {
         id: sliderTnT
-        value: 0.56
-//        anchors.left: parent.left
-//        anchors.leftMargin: 150
-//        anchors.top:vendosjaRadioButtonsGroupBox.top
-//        anchors.verticalCenter: parent.verticalCenter
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        anchors.horizontalCenterOffset:
+        value: 0.5
         anchors.left: parent.horizontalCenter
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-
-
 
         minimumValue: 0.5
         maximumValue: 0.6
 
         stepSize: 0.01
+        z:100
+
 
         style: SliderStyle {
              groove: Rectangle {
-                 implicitWidth: 50
+                 implicitWidth: topRect.width/8
                  implicitHeight: topRect.height/3.1
-                 color: "lightgreen"
-//                         radius: 8
+//                 color: "lightgreen"
+
+                 Rectangle {
+                     color: "lightgreen"
+                     anchors.right: parent.right
+                     height: parent.height+1
+                     width: parent.width - (parent.width * (sliderTnT.value - 0.5)*10)
+                 }
+                 Rectangle {
+                     color: "orange"
+                     anchors.left: parent.left
+                     height: parent.height+1
+                     width: parent.width * (sliderTnT.value - 0.5)*10
+                 }
              }
              handle: Rectangle {
-                 id: handlez
+                 id: handle
                  anchors.centerIn: parent
-//                 anchors.bottom: parent.bottom
-                 color: control.pressed ? "white" : "lightgray"
+                 color: control.pressed ? "yellow" : "lightblue"
                  border.color: "gray"
-//                         border.width: 2
-                 implicitWidth: 10
-                 implicitHeight: 34
-//                         radius: 12
+                 implicitWidth: topRect.width/22
+                 implicitHeight: topRect.height
+
              }
          }
      }
@@ -348,13 +367,13 @@ Rectangle {
 
 
 
-        Text {
-            id: sliderTextTest
-            text: sliderTnT.value
-            anchors.centerIn: parent
-            font.pixelSize: 23
-        }
-
+Text {
+    id: slt
+    text: qsTr("t_pr=" + (1-sliderTnT.value).toFixed(2))
+    anchors.right: sliderReckt.right
+    anchors.verticalCenter: slT.verticalCenter
+    font.pixelSize: topRect.height*0.6
+}
 
 
 
@@ -371,8 +390,8 @@ Rectangle {
             anchors.right: parent.right
             anchors.rightMargin: 5
 
-            anchors.top: hMinNjesia.bottom
-            anchors.topMargin: 10
+            anchors.top: sliderReckt.bottom
+            anchors.topMargin: topRect.height/2
         }
 
 
@@ -385,6 +404,16 @@ Rectangle {
 
 
     }
+
+
+
+    Text {
+        id: test
+        text: qsTr("text")
+        font.pixelSize: 30
+        anchors.centerIn: parent
+    }
+
 
 
     //BUTTONS
@@ -493,25 +522,41 @@ Rectangle {
                         var cilesiaAksi = 0;
 
 
-                        tolerancaTnPrim = hMaxInput.text - hMinInput.text;
+                        tolerancaTnPrim = hMaxInput.text - hMinInput.text; console.log("TnPrim: ",tolerancaTnPrim)
 
 
-
-                        tolerancaTPrim = sliderTnT.value*tolerancaTnPrim;
+                        tolerancaTPrim = sliderTnT.value*tolerancaTnPrim; console.log("TPrim: ",tolerancaTPrim)
 
                         cilesiaVrima = Tabela2_1JS.cilesiaFushesToleruese( diametriNominalInput.text,
-                                                                           tolerancaTPrim);console.log(cilesiaVrima)
-                        tolerancaT = Tabela2_1JS.getTolerancen(cilesiaVrima,diametriNominalInput.text);
+                                                                           tolerancaTPrim); console.log("cil vri: ",cilesiaVrima)
+                        tolerancaT = Tabela2_1JS.getTolerancen(cilesiaVrima,diametriNominalInput.text); console.log("T: ",tolerancaT)
 
 
                         console.log(tolerancaT)
-                        tolerancatPrim = tolerancaTnPrim - Tabela2_1JS.getTolerancen(cilesiaAksi,
-                                                                                    tolerancaT);
+                        tolerancatPrim = tolerancaTnPrim - tolerancaT; /*Tabela2_1JS.getTolerancen(cilesiaAksi,
+                                                                                    tolerancaT);*/ console.log("tPrim: ",tolerancatPrim)
                         cilesiaAksi = Tabela2_1JS.cilesiaFushesToleruese( diametriNominalInput.text,
-                                                                         tolerancatPrim);
-                        tolerancat = Tabela2_1JS.cilesiaFushesToleruese( diametriNominalInput.text,
-                                                                        tolerancatPrim);
+                                                                         tolerancatPrim); console.log("cil aksi: ",cilesiaAksi)
+                        tolerancat = Tabela2_1JS.getTolerancen(cilesiaAksi,
+                                                               diametriNominalInput.text);console.log("t: ",tolerancat)
                         console.log(tolerancat)
+
+
+
+                        /* vlerat kufitare per es */
+
+                        var esKufiriPoshtem = hMinInput.text;
+                        var esKUfiriEperm = hMaxInput.text - (tolerancaT+tolerancat);
+
+                        console.log(esKufiriPoshtem); console.log(esKUfiriEperm)
+
+                        var es = Tabela2_4JS.esGetShkronjen(esKufiriPoshtem, esKUfiriEperm,
+                                                          diametriNominalInput.text);
+
+
+                        test.text = "Vendosja eshte: " +diametriNominalInput.text + "H"
+                        +cilesiaVrima +" / "+es+cilesiaAksi;
+
 
 
                     }

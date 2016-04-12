@@ -1,5 +1,5 @@
 
-var tabela2_4 = [[270, 270, 280, , 290, 290, 300, 300, 310, 320, 340, 360, 380, 410, 460, 520, 580, 660, 740, 820, 920, 1050, 1200, 1350, 1500, 1650],
+var tabela2_4 = [[270, 270, 280, 290, 290, 300, 300, 310, 320, 340, 360, 380, 410, 460, 520, 580, 660, 740, 820, 920, 1050, 1200, 1350, 1500, 1650],
                  [140, 140, 150, 150, 150, 160, 160, 170, 180, 190, 200, 220, 240, 260, 280, 310, 340, 380, 420, 480, 540, 600, 680, 760, 840],
                  [60, 70, 80, 95, 95, 110, 110, 120, 130, 140, 150, 170, 180, 200, 210, 230, 240, 260, 280, 300, 330, 360, 400, 440, 480],
                  [20, 30, 40, 50, 50, 65, 65, 80, 80, 100, 100, 120, 120, 145, 145, 145, 170, 170, 170, 190, 190, 210, 210, 230, 230],
@@ -50,7 +50,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
 
     var es_ei = 234234;
 
-/*                  a                 b                 c                 d    */
+    /*                  a                 b                 c                 d    */
     if (shkronja ===0 || shkronja === 1 || shkronja === 2 || shkronja === 3 ||
 
             /*                       e                 f                 g                 h */
@@ -123,7 +123,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
             es_ei = tabela2_4[shkronja][18]
         }
         else if(diametri > 250 && diametri <= 280){
-            es_ei = tabela2_4[shkronja][19]                         //gabim - shkronja prej 20 (...[shrkonja][20])
+            es_ei = tabela2_4[shkronja][19]                         //gabim - shkronja prej 20 (...[shkronja][20])
         }
 
         else if(diametri > 280 && diametri <= 315){
@@ -145,7 +145,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
 
     }
 
-/*                        j                                     */
+    /*                        j                                     */
     else if (shkronja === 8 ){
 
         if (cilesia === 5 || cilesia === 6 ){
@@ -336,7 +336,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
 
     }
 
-/*                        k                                     */
+    /*                        k                                     */
     else if(shkronja === 9){
 
         if (cilesia === 5 || cilesia === 6 || cilesia === 7) {
@@ -436,7 +436,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
 
     }
 
-/*                        m                                     */
+    /*                        m                                     */
     else if( shkronja === 10){
         if(diametri >1 && diametri <=3 ){
             es_ei = tabela2_4[23][0]
@@ -526,7 +526,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
         }
     }
 
-/*                         n                                     */
+    /*                         n                                     */
     else if( shkronja === 11){
         if(diametri >1 && diametri <=3 ){
             es_ei = tabela2_4[24][0]
@@ -619,7 +619,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
 
 
 
-/*                         p                                     */
+    /*                         p                                     */
     else if( shkronja === 12){
         if(diametri >1 && diametri <=3 ){
             es_ei = tabela2_4[25][0]
@@ -1761,7 +1761,123 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
         es_ei = es_ei *(-1);
 
     console.log("es_ei returned from tabela2_4 eshte: ", es_ei)
-//    console.log(es_ei.toString())
+    //    console.log(es_ei.toString())
 
     return es_ei/1000;
 }
+
+
+
+
+/*  getShkronjen e gjen shkronjen bazuar ne te dhenen ...*/
+
+function esGetShkronjen (esKufiriPoshtem, esKurifiriEperm, diametriNominal ) {
+
+    var diam = parseFloat(diametriNominal);
+
+    console.log("diametri nominal",diam)
+
+    if (diam<=3) { diam = 0;}
+    else if(diam >6 && diam <=10) { diam = 2; }
+    else if(diam >10 && diam <=18) { diam = 3; }
+    else if(diam >18 && diam <=30) { diam = 4; }
+    else if(diam >30 && diam <=50) { diam = 5; }
+    else if(diam >50 && diam <=80) { diam = 6; }
+    else if(diam >80 && diam <=120) { diam = 7; }
+    else if(diam >120 && diam <=180) { diam = 8; }
+    else if(diam >180 && diam <=250) { diam = 9; }
+    else if(diam >250 && diam <=315) { diam = 10; }
+    else if(diam >315 && diam <=400) { diam = 11; }
+    else if(diam >400 && diam <=500) { diam = 12; }
+
+        console.log("diam",diam)
+    diam +=4;
+
+    var rreshti = 0;   /* rreshti nga tabela. E percakton shkronjen */
+
+
+    var i=0;
+
+    /* i <=7 - vlerat es ne tabele. Pastaj fillojne ato ei  */
+
+    console.log("kufiriposhtem funksioni",esKufiriPoshtem);
+    console.log("kufirieprem funksioni", esKurifiriEperm)
+
+    while (i <= 7) {
+        if(tabela2_4[i][diam] >= esKufiriPoshtem &&
+                tabela2_4[i][diam] <= esKurifiriEperm ) {
+
+            rreshti = i;
+            console.log("rreshit mrena while eshte: ",rreshti)
+            break;
+
+
+        }
+
+        console.log(" vlera tabela: ",tabela2_4[i][diam])
+        i++;
+
+        console.log("rreshit eshte: ",rreshti);
+        console.log(" i eshte: ",i)
+
+
+    }
+
+
+    var shkronja = "i"
+
+
+    switch (rreshti) {
+
+    case 0:
+        shkronja = "a";
+        break;
+    case 1:
+        shkronja = "b"
+        break;
+    case 2:
+        shkronja = "c";
+        break;
+    case 3:
+        shkronja = "d"
+        break;
+    case 4:
+        shkronja = "e";
+        break;
+    case 5:
+        shkronja = "f"
+        break;
+    case 6:
+        shkronja = "g";
+        break;
+    case 7:
+        shkronja = "h"
+        break;
+
+    }
+
+    /*perfundon me h sepse pastaj fillojne vlerat ei ne tabele */
+
+
+
+    return shkronja;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

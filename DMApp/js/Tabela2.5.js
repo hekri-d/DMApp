@@ -537,7 +537,7 @@ function getDeviationHole(diametri, shkronja, cilesia) {
 
 
 
-    console.log((tabela2_5))
+
 
     if (cilesia > 24)
         es_ei = es_ei *(-1);
