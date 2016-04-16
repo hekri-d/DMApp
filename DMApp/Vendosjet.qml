@@ -208,7 +208,7 @@ Rectangle {
         ListModel {
             id: detyra1
 
-            ListElement { name: "DETYRA 1"; facts: "FUCK THIS SHIT.Jane dhene te dhenat duhet te zgjidhet vendosja";  }
+            ListElement { name: "DETYRA 1"; facts: "Është dhën vendosja. Duhet të gjinden shmangiet, përmasat kufitare, hapësirat/interferenca, kontrollohen përmasat e vërteta, etj.";  }
         }
 
 
@@ -462,7 +462,7 @@ Rectangle {
         ListModel {
             id: detyra2
 
-            ListElement { name: "DETYRA 2"; facts: "Jane dhene te dhenat duhet te zgjidhet vendosja";  }
+            ListElement { name: "DETYRA 2"; facts: "Janë dhënë hapësirat (e poshtme dhe e epërme). Duhet të llogaritet vendosje standarde që i përshtatet kushteve të dhëna. Gjithashtu duhet të caktohen edhe përmasat kufitare, shmangiet, hapësirat/inteferencat, etj.";  }
         }
 
 
