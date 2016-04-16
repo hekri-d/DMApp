@@ -574,11 +574,20 @@ Text {
                         var ES = Tabela2_5JS.eSGetShkronjen(ESKufiriPoshtem, ESKUfiriEperm,
                                                           diametriNominalInput.text);
 
-                        /*var llojiVendosjes =*/ function shemsi (){
-                            if(stppbRadioButton.checked){
-                           /* llojiVendosjes = */return "H";
-                        } else /*llojiVendosjes =*/ return "J" }
 
+                        function vendosjeSTPPB (){
+                            if(stppbRadioButton.checked){
+                                return "H";
+                            }
+                            else return "";
+                        }
+
+                        function vendosjeSTPPJ (){
+                            if(stppjRadioButton.checked){
+                                return "h";
+                            }
+                            else return "";
+                        }
 
                         vendosjaDisplay.text =(diametriNominalInput.text).toString() + shemsi()
                         +cilesiaVrima +" / "+ES+cilesiaAksi;

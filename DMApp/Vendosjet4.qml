@@ -36,10 +36,9 @@ Item {
 
 
 
-
         Text { font.pixelSize: topRect.height*0.6
-            id: iMax
-            text: qsTr("I_max: ")
+            id: hMin
+            text: qsTr("H_min: ")
             anchors.left: parent.left
             anchors.leftMargin: 10
             anchors.top: teDhenat.bottom
@@ -47,54 +46,11 @@ Item {
         }
 
         TextInput {
-            id: iMaxInput
-            anchors.left: iMax.right
-            anchors.leftMargin: 10
-            anchors.verticalCenter: iMax.verticalCenter
-            anchors.right: iMaxNjesia.left
-            anchors.rightMargin: 10
-
-            height: topRect.height*0.85
-
-            font.pixelSize: topRect.height*0.6
-
-            focus: true
-
-            Rectangle {
-                anchors.fill: parent
-                color: "lightblue"
-                z:-1
-
-                anchors.leftMargin: -5; anchors.rightMargin: -5
-            }
-        }
-
-
-        Text { font.pixelSize: topRect.height*0.6
-            id: iMaxNjesia
-            text: qsTr("mikro m")
-            anchors.right: parent.right
-            anchors.rightMargin: 10
-            anchors.verticalCenter: iMaxInput.verticalCenter
-            width: topRect.width/5
-        }
-
-
-        Text { font.pixelSize: topRect.height*0.6
-            id: iMin
-            text: qsTr("I_min: ")
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.top: iMax.bottom
-            anchors.topMargin: 10
-        }
-
-        TextInput {
-            id: iMinInput
-            anchors.left: iMin.right
-            anchors.leftMargin: 10
-            anchors.verticalCenter: iMin.verticalCenter
-            anchors.right: iMinNjesia.left
+            id: hMinInput
+            anchors.left: diametriNominalInput.left
+//            anchors.leftMargin: 10
+            anchors.verticalCenter: hMin.verticalCenter
+            anchors.right: hMinNjesia.left
             anchors.rightMargin: 10
             height: topRect.height*0.83
 
@@ -111,11 +67,11 @@ Item {
 
 
         Text { font.pixelSize: topRect.height*0.6
-            id: iMinNjesia
+            id: hMinNjesia
             text: qsTr("mikro m")
             anchors.right: parent.right
             anchors.rightMargin: 10
-            anchors.verticalCenter: iMinInput.verticalCenter
+            anchors.verticalCenter: hMinInput.verticalCenter
             width: topRect.width/5
         }
 
@@ -126,9 +82,9 @@ Item {
         Text { font.pixelSize: topRect.height*0.6
             id: diametriNominal
             text: qsTr("D. nominal: ")
-            anchors.left: iMin.left
+            anchors.left: hMin.left
 //            anchors.leftMargin: 10
-            anchors.top: iMin.bottom
+            anchors.top: hMin.bottom
             anchors.topMargin: 10
         }
 
@@ -382,6 +338,69 @@ Text {
 
 
 
+
+Text {
+    id: cil
+    text: qsTr("Cilësitë.   Vrima: ")
+    anchors.left: parent.left
+    anchors.leftMargin: 5
+    anchors.top: ttprimPjesmarrja.bottom
+    anchors.topMargin: topRect.height/2
+
+    font.pixelSize: topRect.height*0.6
+}
+
+
+
+ComboBox {
+    id: cilesiaVrimaCombobox
+
+    anchors.left: cil.right
+    anchors.leftMargin: 5
+    anchors.verticalCenter: cil.verticalCenter
+    width: topRect.width/7
+    height: topRect.height/1.2
+
+    model: 19
+
+    style: ComboBoxStyle {
+        background: Rectangle {
+            color: "lightblue"
+        }
+    }
+}
+
+
+Text {
+    id: cilA
+    text: qsTr("Aksi: ")
+    anchors.left: cilesiaVrimaCombobox.right
+    anchors.leftMargin: 20
+    anchors.verticalCenter: cil.verticalCenter
+    font.pixelSize: topRect.height*0.6
+}
+
+
+
+ComboBox {
+    id: cilesiaAksiCombobox
+
+    anchors.left: cilA.right
+    anchors.leftMargin: 5
+    anchors.verticalCenter: cilA.verticalCenter
+    width: topRect.width/7
+    height: topRect.height/1.2
+
+    model: 19
+
+    style: ComboBoxStyle {
+        background: Rectangle {
+            color: "lightblue"
+        }
+    }
+}
+
+
         Rectangle {
             id:vijaNdarese
             height: 3
@@ -392,7 +411,7 @@ Text {
             anchors.right: parent.right
             anchors.rightMargin: 5
 
-            anchors.top: ttprimPjesmarrja.bottom
+            anchors.top: cil.bottom
             anchors.topMargin: topRect.height/2
         }
 
@@ -543,7 +562,7 @@ Text {
                         var cilesiaAksi = 0;
 
 
-                        tolerancaTnPrim = iMaxInput.text - iMinInput.text; console.log("TnPrim: ",tolerancaTnPrim)
+                        tolerancaTnPrim = iMaxInput.text - hMinInput.text; console.log("TnPrim: ",tolerancaTnPrim)
 
 
                         tolerancaTPrim = sliderTnT.value*tolerancaTnPrim; console.log("TPrim: ",tolerancaTPrim)
@@ -566,7 +585,7 @@ Text {
 
                         /* vlerat kufitare per ES */
 
-                        var ESKufiriPoshtem = parseFloat(iMinInput.text) + tolerancat;
+                        var ESKufiriPoshtem = parseFloat(hMinInput.text) + tolerancat;
                         var ESKUfiriEperm = iMaxInput.text - (tolerancaT);
 
                         console.log(ESKufiriPoshtem); console.log(ESKUfiriEperm)
@@ -574,10 +593,21 @@ Text {
                         var ES = Tabela2_5JS.eSGetShkronjen(ESKufiriPoshtem, ESKUfiriEperm,
                                                           diametriNominalInput.text);
 
-                        /*var llojiVendosjes =*/ function shemsi (){
+
+                        function vendosjeSTPPB (){
                             if(stppbRadioButton.checked){
-                           /* llojiVendosjes = */return "H";
-                        } else /*llojiVendosjes =*/ return "J" }
+                                return "H";
+                            }
+                            else return "";
+                        }
+
+                        function vendosjeSTPPJ (){
+                            if(stppjRadioButton.checked){
+                                return "h";
+                            }
+                            else return "";
+                        }
+
 
 
                         vendosjaDisplay.text =(diametriNominalInput.text).toString() + shemsi()
