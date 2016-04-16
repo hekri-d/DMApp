@@ -4,6 +4,9 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
 
+//test test test
+
+
 Window {
     id: root
     visible: true
@@ -12,7 +15,6 @@ Window {
 
     color: "grey"
 
-//Ni kurgjo nuk osht hiq. Po qa po me do me ba? Me kcye
 
     property bool mouseAreas: true;
 
