@@ -3,8 +3,8 @@ import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
 
-import "js/Tabela2.1.js" as Tabela2_1JS
-import "js/Tabela2.4.js" as Tabela2_4JS
+import "js/Tabela21.js" as Tabela2_1JS
+import "js/Tabela24.js" as Tabela2_4JS
 
 Item {
 
@@ -486,7 +486,7 @@ Text {
 
 
                 Image {
-                    source: "qrc:/left-arrow.png"
+                    source: "qrc:/images/left-arrow.png"
                     anchors.fill: parent
                     rotation: 180
                     fillMode: Image.PreserveAspectFit
@@ -518,7 +518,7 @@ Text {
                 radius: 5
 
                 Image {
-                    source: "qrc:/ok.png"
+                    source: "qrc:/images/ok.png"
                     anchors.fill: parent
                     anchors.leftMargin: 15
                     anchors.rightMargin: 15
@@ -607,7 +607,7 @@ Text {
                 border.width: 3
                 radius: 5
                 Image {
-                    source: "qrc:/exit.svg"
+                    source: "qrc:/images/exit.svg"
                     anchors.fill: parent
                     anchors.topMargin: 10
                     anchors.bottomMargin: 10

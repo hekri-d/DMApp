@@ -4,9 +4,9 @@ import QtQuick.Controls.Styles 1.3
 import QtQuick.Window 2.0
 import QtQuick.Layouts 1.1
 
-import "js/Tabela2.1.js" as Tabela2_1JS
-import "js/Tabela2.5.js" as Tabela2_5JS
-import "js/Tabela2.4.js" as Tabela2_4JS
+import "js/Tabela21.js" as Tabela2_1JS
+import "js/Tabela25.js" as Tabela2_5JS
+import "js/Tabela24.js" as Tabela2_4JS
 
 Rectangle {
     id:vendosjet1
@@ -36,7 +36,7 @@ Rectangle {
 
     Image {
         id: fi
-        source: "qrc:/phi.png"
+        source: "qrc:/images/phi.png"
         anchors.left: vendosja.left
         anchors.top: vendosja.bottom
         anchors.topMargin: 7
@@ -857,7 +857,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
                 Image {
-                    source: "qrc:/left-arrow.png"
+                    source: "qrc:/images/left-arrow.png"
                     anchors.fill: parent
                     rotation: 180
                     fillMode: Image.PreserveAspectFit
@@ -889,7 +889,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                 radius: 5
 
                 Image {
-                    source: "qrc:/ok.png"
+                    source: "qrc:/images/ok.png"
                     anchors.fill: parent
                     anchors.leftMargin: 15
                     anchors.rightMargin: 15
@@ -1084,7 +1084,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                 border.width: 3
                 radius: 5
                 Image {
-                    source: "qrc:/exit.svg"
+                    source: "qrc:/images/exit.svg"
                     anchors.fill: parent
                     anchors.topMargin: 10
                     anchors.bottomMargin: 10

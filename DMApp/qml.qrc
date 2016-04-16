@@ -2,13 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Vendosjet.qml</file>
-        <file>Vendosjet_1.qml</file>
-        <file>Vendosjet_2.qml</file>
-        <file>lefta-rrow.png</file>
-        <file>left-arrow.png</file>
-        <file>exit.svg</file>
-        <file>arrow-down.png</file>
-        <file>ok.png</file>
-        <file>phi.png</file>
+        <file>Vendosjet1.qml</file>
+        <file>Vendosjet2.qml</file>
     </qresource>
 </RCC>

@@ -69,7 +69,7 @@ Rectangle {
                     //    property bool toggleArrow: true
                     Image {
                         id: rightz1
-                        source: "qrc:/arrow-down.png"
+                        source: "qrc:/images/arrow-down.png"
                         anchors.right: parent.right
                         anchors.top: parent.top
                         anchors.topMargin: 3
@@ -100,7 +100,7 @@ Rectangle {
 
                     Image {
                         id: down1
-                        source: "qrc:/arrow-down.png"
+                        source: "qrc:/images/arrow-down.png"
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
                         anchors.topMargin: 3
@@ -232,14 +232,14 @@ Rectangle {
     Component {
         id: v1comp
 
-        Vendosjet_1 {}
+        Vendosjet1 {}
     }
 
 
     Component {
         id: v2comp
 
-        Vendosjet_2 {}
+        Vendosjet2 {}
     }
 
     //==============================CORPOLENTS==============
@@ -322,7 +322,7 @@ Rectangle {
 
                     Image {
                         id: rightz2
-                        source: "qrc:/arrow-down.png"
+                        source: "qrc:/images/arrow-down.png"
                         anchors.right: parent.right
                         anchors.top: parent.top
                         anchors.topMargin: 3
@@ -351,7 +351,7 @@ Rectangle {
 
                     Image {
                         id: down2
-                        source: "qrc:/arrow-down.png"
+                        source: "qrc:/images/arrow-down.png"
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
                         anchors.topMargin: 3
@@ -484,7 +484,7 @@ Rectangle {
 
     Image {
         id: back
-        source: "qrc:/arrow-down.png"
+        source: "qrc:/images/arrow-down.png"
         anchors.fill: parent
         rotation: 90
 
