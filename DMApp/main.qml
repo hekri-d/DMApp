@@ -12,8 +12,7 @@ Window {
 
     color: "grey"
 
-//Ni kurgjo nuk osht hiq. Po qa po me do me ba? Me kcye
-
+/A bit buckt/github script test test
     property bool mouseAreas: true;
 
     Component {
