@@ -14,15 +14,13 @@ Rectangle {
 
     property bool toggleArrow: true
     property bool toggleArrow2: true
+    property bool toggleArrow3: true
 
 
 
 
     Item {
         id: item1
-        //        anchors.top: vendosjet.top
-        //        anchors.right: parent.right
-        //        anchors.left: parent.left
         width: parent.width
         height: parent.height
 
@@ -116,7 +114,7 @@ Rectangle {
                         anchors.fill: down1
                         onClicked: {
 
-                                updateItem2TopMargi()
+                                updateItem2TopMargin()
 
                             if(toggleArrow == true){
                                 wrapper1.state = "expanded1"
@@ -227,7 +225,7 @@ Rectangle {
 
 
 
-    //==============================CORPOLENTS==============
+    //============================== CORPOLENTS ==============
 
     Component {
         id: v1comp
@@ -242,27 +240,20 @@ Rectangle {
         Vendosjet2 {}
     }
 
-    //==============================CORPOLENTS==============
+    Component {
+        id: v3comp
+
+        Vendosjet3 {}
+    }
+
+    //============================== CORPOLENTS - END ==============
 
 
-//    signal anchorItem2();
-
-//    onAnchorItem2: {
-//        if(toggleArrow === true ){
-//            item2.anchors.topMargin = 50;
-//        }
-
-//        else if(toggleArrow !== true){
-//            item2.anchors.topMargin = vendosjet.height
-//        }
 
 
-//    }
+    property real anchorsMargin: updateItem2TopMargin();
 
-
-    property real anchorsMargin: updateItem2TopMargi();
-
-    function updateItem2TopMargi (){
+    function updateItem2TopMargin (){
 
         if(toggleArrow === true) {
             return 50;
@@ -369,7 +360,7 @@ Rectangle {
 
                         onClicked: {
 
-//                            anchorItem2()
+                            updateItem3TopMargin()
 
                             if(toggleArrow2 == true){
                                 wrapper2.state = "expanded2"
@@ -474,6 +465,240 @@ Rectangle {
 
 
     }
+
+
+
+
+
+    property real anchors3Margin: updateItem3TopMargin();
+
+    function updateItem3TopMargin (){
+
+        if(toggleArrow === true && toggleArrow2 === true) {
+            return 100;
+        }
+
+        else if(toggleArrow !== true || toggleArrow2 !== true) {
+            return vendosjet.height;
+        }
+    }
+
+
+
+    Item {
+        id: item3
+        anchors.top: vendosjet.top
+        anchors.topMargin: anchors3Margin
+        anchors.right: parent.right
+        anchors.left: parent.left
+        height: parent.height
+
+
+
+        ListView {
+            id: listView3
+            anchors.fill: parent
+            model: detyra3
+
+            delegate: Item {
+                id: wrapper3
+                width: listView3.width
+                height: 50
+
+
+                Rectangle {
+                    id: namesRect3
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+
+                    height: 50
+
+                    color: "#333"
+                    border.color: Qt.lighter(color, 1.2)
+
+                    Text {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.leftMargin: 4
+                        font.pixelSize: 20
+                        color: "steelblue"
+                        text: name
+
+                    }
+
+
+
+                    Image {
+                        id: rightz3
+                        source: "qrc:/images/arrow-down.png"
+                        anchors.right: parent.right
+                        anchors.top: parent.top
+                        anchors.topMargin: 3
+                        width: 30
+                        height: parent.height
+                        rotation: 270
+
+                        fillMode: Image.PreserveAspectFit
+
+                    }
+
+
+                    MouseArea {
+                        id: enter3
+                        anchors.fill: rightz3
+                        onClicked: {
+                            mainStack.push(v3comp)
+
+
+                        }
+                    }
+
+
+
+
+
+                    Image {
+                        id: down3
+                        source: "qrc:/images/arrow-down.png"
+                        anchors.left: parent.left
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 3
+                        width: 40
+                        height: 30
+
+                        fillMode: Image.PreserveAspectFit
+
+                    }
+
+                    MouseArea {
+                        id: expand3
+                        //                            z:100000
+                        anchors.fill: down3
+
+                        onClicked: {
+
+//                            anchorItem3()
+
+                            if(toggleArrow3 == true){
+                                wrapper3.state = "expanded3"
+                                toggleArrow3 = false
+                                down3.rotation = 180
+                            }
+
+                            else if(toggleArrow3 == false){
+                                wrapper3.state = ""
+                                toggleArrow3 = true
+                                down3.rotation = 360
+                            }
+
+                        }
+
+
+
+                    }
+
+
+
+                }
+
+
+
+
+
+                Item {
+                    id: factsView3
+
+                    anchors.top: namesRect3.bottom
+                    anchors.left: namesRect3.left
+                    anchors.right: namesRect3.right
+                    anchors.bottom: parent.bottom
+
+                    opacity: 0
+
+                    Rectangle {
+                        anchors.fill: parent
+
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: "#fed958" }
+                            GradientStop { position: 1.0; color: "#fecc2f" }
+                        }
+                        border.color: '#000000'
+                        border.width: 2
+
+                        Text {
+                            anchors.fill: parent
+                            anchors.margins: 5
+
+                            clip: true
+                            wrapMode: Text.WordWrap
+                            color: '#1f1f21'
+
+                            font.pixelSize: 22
+
+                            text: facts
+                        }
+                    }
+                }
+
+
+                //                        border.color: Qt.lighter(color, 1.1) -- interesting that's why it is left here
+
+
+
+                states: [
+                    State {
+                        name: "expanded3"
+
+                        PropertyChanges { target: wrapper3; height: listView3.height }
+                        PropertyChanges { target: factsView3; opacity: 1 }
+                    }
+                ]
+
+                transitions: [
+                    Transition {
+                        NumberAnimation {
+                            duration: 400;
+                            properties: "height,width,anchors.rightMargin,anchors.topMargin,opacity,contentY"
+                        }
+                    }
+                ]
+            }
+
+        }
+
+
+        ListModel {
+            id: detyra3
+
+            ListElement { name: "DETYRA 3"; facts: "Janë dhënë interferencat (e poshtme dhe e epërme). Duhet të llogaritet vendosje standarde që i përshtatet kushteve të dhëna. Gjithashtu duhet të caktohen edhe përmasat kufitare, shmangiet, hapësirat/inteferencat, etj.";  }
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Rectangle {

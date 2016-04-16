@@ -4,5 +4,6 @@
         <file>Vendosjet.qml</file>
         <file>Vendosjet1.qml</file>
         <file>Vendosjet2.qml</file>
+        <file>Vendosjet3.qml</file>
     </qresource>
 </RCC>

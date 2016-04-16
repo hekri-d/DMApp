@@ -547,3 +547,135 @@ function getDeviationHole(diametri, shkronja, cilesia) {
     return es_ei/1000;
 }
 
+
+
+
+
+
+function eSGetShkronjen (ESKufiriPoshtem, ESKurifiriEperm, diametriNominal ) {
+
+    var diam = parseFloat(diametriNominal);
+
+    console.log("diametri nominal",diam)
+
+    if (diam<=3) { diam = 0;}
+    else if(diam >6 && diam <=10) { diam = 2; }
+    else if(diam >10 && diam <=18) { diam = 3; }
+    else if(diam >18 && diam <=30) { diam = 4; }
+    else if(diam >30 && diam <=50) { diam = 5; }
+    else if(diam >50 && diam <=80) { diam = 6; }
+    else if(diam >80 && diam <=120) { diam = 7; }
+    else if(diam >120 && diam <=180) { diam = 8; }
+    else if(diam >180 && diam <=250) { diam = 9; }
+    else if(diam >250 && diam <=315) { diam = 10; }
+    else if(diam >315 && diam <=400) { diam = 11; }
+    else if(diam >400 && diam <=500) { diam = 12; }
+
+        console.log("diam",diam)
+    diam =13;
+
+    var rreshti = 0;             /* rreshti nga tabela. E percakton shkronjen */
+
+
+    var i=66;                    /* i = 66 --> rreshti i fundit i tabeles */
+
+
+                                /* i  > 7 - vlerat ES ne tabele. Para ketyre jane ato EI. */
+
+    console.log("kufiriposhtem funksioni",ESKufiriPoshtem);
+    console.log("kufirieprem funksioni", ESKurifiriEperm)
+
+    while (i > 7) {
+        if(tabela2_5[i][diam] >= ESKufiriPoshtem &&
+                tabela2_5[i][diam] <= ESKurifiriEperm ) {
+
+            rreshti = i;
+            console.log("rreshit mrena while eshte: ",rreshti)
+            break;
+
+
+        }
+
+        console.log(" vlera tabela: ",tabela2_5[i][diam])
+        i--;
+
+        console.log("rreshit eshte: ",rreshti);
+        console.log(" i eshte: ",i)
+
+
+    }
+
+
+    var shkronja = "I"  /* Mund te perdoret i sepse nuk gjendet ne tabela */
+
+
+
+    if(rreshti >= 8 && rreshti <= 20){
+        shkronja = "J";
+    }
+
+    else if(rreshti >= 21 && rreshti <= 23){
+                shkronja = "K"
+    }
+
+    else if(rreshti >= 24 && rreshti <= 26){
+                shkronja = "M"
+    }
+
+    else if(rreshti >= 27 && rreshti <= 30){
+                shkronja = "N"
+    }
+
+    else if(rreshti >= 31 && rreshti <= 33){
+                shkronja = "P"
+    }
+
+    else if(rreshti >= 34 && rreshti <= 36){
+                shkronja = "R"
+    }
+
+    else if(rreshti >= 37 && rreshti <= 39){
+                shkronja = "S"
+    }
+
+    else if(rreshti >= 40 && rreshti <= 42){
+                shkronja = "T"
+    }
+
+    else if(rreshti >= 43 && rreshti <= 45){
+                shkronja = "U"
+    }
+
+    else if(rreshti >= 46 && rreshti <= 48){
+                shkronja = "V"
+    }
+
+    else if(rreshti >= 49 && rreshti <= 51){
+                shkronja = "X"
+    }
+
+    else if(rreshti >= 52 && rreshti <= 54){
+                shkronja = "Y"
+    }
+
+    else if(rreshti >= 55 && rreshti <= 57){
+                shkronja = "Z"
+    }
+
+    else if(rreshti >= 58 && rreshti <= 60){
+                shkronja = "ZA"
+    }
+
+    else if(rreshti >= 61 && rreshti <= 63){
+                shkronja = "ZB"
+    }
+
+    else if(rreshti >= 64 && rreshti <= 66){
+                shkronja = "ZC"
+    }
+
+
+    return shkronja;
+
+}
+
