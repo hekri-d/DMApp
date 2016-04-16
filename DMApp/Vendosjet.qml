@@ -10,13 +10,15 @@ Rectangle {
 
 
 
-
+/*  ================= TOGGLE ARROWS ============= */
 
     property bool toggleArrow: true
     property bool toggleArrow2: true
     property bool toggleArrow3: true
+    property bool toggleArrow4: true
 
 
+/*  ================= TOGGLE ARROWS END ============= */
 
 
     Item {
@@ -225,7 +227,7 @@ Rectangle {
 
 
 
-    //============================== CORPOLENTS ==============
+    /*============================== CORPOLENTS ==============  */
 
     Component {
         id: v1comp
@@ -246,7 +248,13 @@ Rectangle {
         Vendosjet3 {}
     }
 
-    //============================== CORPOLENTS - END ==============
+    Component {
+        id: v4comp
+
+        Vendosjet4 {}
+    }
+
+    /*============================== CORPOLENTS - END ==============  */
 
 
 
@@ -690,9 +698,221 @@ Rectangle {
 
 
 
+    property real anchors4Margin: updateItem4TopMargin();
+
+    function updateItem4TopMargin (){
+
+        if(toggleArrow === true && toggleArrow2 === true && toggleArrow3 === true) {
+            return 150;
+        }
+
+        else if(toggleArrow !== true || toggleArrow2 !== true || toggleArrow3 !== true) {
+            return vendosjet.height;
+        }
+    }
 
 
 
+
+
+    Item {
+        id: item4
+        anchors.top: vendosjet.top
+        anchors.topMargin: anchors4Margin
+        anchors.right: parent.right
+        anchors.left: parent.left
+        height: parent.height
+
+
+
+        ListView {
+            id: listView4
+            anchors.fill: parent
+            model: detyra4
+
+            delegate: Item {
+                id: wrapper4
+                width: listView4.width
+                height: 50
+
+
+                Rectangle {
+                    id: namesRect4
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+
+                    height: 50
+
+                    color: "#333"
+                    border.color: Qt.lighter(color, 1.2)
+
+                    Text {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.leftMargin: 4
+                        font.pixelSize: 20
+                        color: "steelblue"
+                        text: name
+
+                    }
+
+
+
+                    Image {
+                        id: rightz4
+                        source: "qrc:/images/arrow-down.png"
+                        anchors.right: parent.right
+                        anchors.top: parent.top
+                        anchors.topMargin: 3
+                        width: 30
+                        height: parent.height
+                        rotation: 270
+
+                        fillMode: Image.PreserveAspectFit
+
+                    }
+
+
+                    MouseArea {
+                        id: enter4
+                        anchors.fill: rightz4
+                        onClicked: {
+                            mainStack.push(v4comp)
+
+
+                        }
+                    }
+
+
+
+
+
+                    Image {
+                        id: down4
+                        source: "qrc:/images/arrow-down.png"
+                        anchors.left: parent.left
+                        anchors.bottom: parent.bottom
+                        anchors.topMargin: 3
+                        width: 40
+                        height: 30
+
+                        fillMode: Image.PreserveAspectFit
+
+                    }
+
+                    MouseArea {
+                        id: expand4
+                        //                            z:100000
+                        anchors.fill: down4
+
+                        onClicked: {
+
+                            updateItem3TopMargin()
+
+                            if(toggleArrow4 == true){
+                                wrapper4.state = "expanded4"
+                                toggleArrow4 = false
+                                down4.rotation = 180
+                            }
+
+                            else if(toggleArrow4 == false){
+                                wrapper4.state = ""
+                                toggleArrow4 = true
+                                down4.rotation = 360
+                            }
+
+                        }
+
+
+
+                    }
+
+
+
+                }
+
+
+
+
+
+                Item {
+                    id: factsView4
+
+                    anchors.top: namesRect4.bottom
+                    anchors.left: namesRect4.left
+                    anchors.right: namesRect4.right
+                    anchors.bottom: parent.bottom
+
+                    opacity: 0
+
+                    Rectangle {
+                        anchors.fill: parent
+
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: "#fed958" }
+                            GradientStop { position: 1.0; color: "#fecc2f" }
+                        }
+                        border.color: '#000000'
+                        border.width: 2
+
+                        Text {
+                            anchors.fill: parent
+                            anchors.margins: 5
+
+                            clip: true
+                            wrapMode: Text.WordWrap
+                            color: '#1f1f21'
+
+                            font.pixelSize: 22
+
+                            text: facts
+                        }
+                    }
+                }
+
+
+                //                        border.color: Qt.lighter(color, 1.1) -- interesting that's why it is left here
+
+
+
+                states: [
+                    State {
+                        name: "expanded4"
+
+                        PropertyChanges { target: wrapper4; height: listView4.height }
+                        PropertyChanges { target: factsView4; opacity: 1 }
+                    }
+                ]
+
+                transitions: [
+                    Transition {
+                        NumberAnimation {
+                            duration: 400;
+                            properties: "height,width,anchors.rightMargin,anchors.topMargin,opacity,contentY"
+                        }
+                    }
+                ]
+            }
+
+        }
+
+
+        ListModel {
+            id: detyra4
+
+            ListElement { name: "DETYRA 4"; facts: "Është dhënë hapësira minimale, cilësia e aksit dhe vrimës dhe diametri nominal. Duhet të zgjidhet vendosja standarde (e përshtatur). Gjithashtu duhet të caktohen edhe përmasat kufitare, shmangiet, hapësirat/inteferencat, etj.";  }
+        }
+
+
+
+
+
+
+
+
+
+    }
 
 
 

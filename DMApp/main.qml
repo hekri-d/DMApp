@@ -34,7 +34,7 @@ StackView {
         Grid {
             id: gridi
             columns: 1
-            spacing: .9
+//            spacing: .9
 //            anchors.right: parent.right
 //            anchors.rightMargin: 7
 //            anchors.left: parent.left
@@ -108,8 +108,6 @@ StackView {
                 MouseArea {
                     anchors.fill: parent
                     enabled: mouseAreas
-
-                    onClicked: loader.setSource("Tabela8-2.qml")
                 }
             }
 

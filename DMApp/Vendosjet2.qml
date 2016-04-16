@@ -3,6 +3,8 @@ import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
 
+import Qt.labs.controls 1.0 as Labz
+
 import "js/Tabela21.js" as Tabela2_1JS
 import "js/Tabela24.js" as Tabela2_4JS
 
@@ -170,8 +172,8 @@ Item {
 
         GroupBox {
             id: vendosjaRadioButtonsGroupBox
-            anchors.top: diametriNominal.bottom
-            anchors.topMargin: topRect.height/10
+            anchors.top: pjesemarrjaTolerancave.bottom
+//            anchors.topMargin: topRect.height/13
             width: topRect.width/3.8
             height: topRect*2
 
@@ -286,8 +288,8 @@ Item {
 /*  Teksti nga ana e majte e slider-it T */
 
         Text {
-            id: slT
-            text: qsTr("T_pr=" + sliderTnT.value.toFixed(2))
+            id: tprimPjesmarrja
+            text: qsTr("T_prim=")
             anchors.left: vendosjaRadioButtonsGroupBox.right
             anchors.leftMargin: 20
 //            anchors.top: diametriNominalInput.bottom
@@ -298,80 +300,81 @@ Item {
 
         }
 
-Rectangle {
-    id: sliderReckt
-    anchors.left: slT.left
-    anchors.top: slT.bottom
-    anchors.topMargin: 10
-    width: topRect.width/1.5
-    color: "orange"
-    height: topRect.height/3
 
-    Rectangle {
-        height: parent.height
-        color: "lightgreen"
-        anchors.right: parent.right
-        width: parent.width/2
-        anchors.bottom: parent.bottom
-   }
+        Labz.SpinBox {
+            id: vrimaLartesia
+            anchors.top: tprimPjesmarrja.top
+            anchors.left: tprimPjesmarrja.right
+            anchors.leftMargin: 10
+            width: topRect.width/3; height: topRect.height/1.2
+            value: 50
+            from: 50; to: 60; stepSize: 1
 
 
+            down.indicator: Rectangle {
+                  height: parent.height
+                  implicitWidth: 25
+                  implicitHeight: 20
+                  color: "lightblue"
+                  border.color:  "black"
 
-    Slider {
-        id: sliderTnT
-        value: 0.5
-        anchors.left: parent.horizontalCenter
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
+                  Rectangle {
+                      x: (parent.width - width) / 2
+                      y: (parent.height - height) / 2
+                      width: parent.width / 3
+                      height: 2
+                      color: "black"
+//                      color: control.enabled ? "#353637" : "#bdbebf"
+                  }
+              }
 
-        minimumValue: 0.5
-        maximumValue: 0.6
+            contentItem: Rectangle {
 
-        stepSize: 0.01
-        z:100
+                anchors.fill: parent
+                color: "lightblue"
+                border.color:  "black"
 
+                Text {
+                    id: spinBoxValue
+                    anchors.centerIn: parent
+                    text: vrimaLartesia.value/100
+                }
 
-        style: SliderStyle {
-             groove: Rectangle {
-                 implicitWidth: topRect.width/8
-                 implicitHeight: topRect.height/3.1
-//                 color: "lightgreen"
+            }
 
-                 Rectangle {
-                     color: "lightgreen"
-                     anchors.right: parent.right
-                     height: parent.height+1
-                     width: parent.width - (parent.width * (sliderTnT.value - 0.5)*10)
-                 }
-                 Rectangle {
-                     color: "orange"
-                     anchors.left: parent.left
-                     height: parent.height+1
-                     width: parent.width * (sliderTnT.value - 0.5)*10
-                 }
-             }
-             handle: Rectangle {
-                 id: handle
-                 anchors.centerIn: parent
-                 color: control.pressed ? "yellow" : "lightblue"
-                 border.color: "gray"
-                 implicitWidth: topRect.width/22
-                 implicitHeight: topRect.height
+            up.indicator: Rectangle {
+                height: parent.height
+                anchors.right: parent.right
+                implicitWidth: 25
+                implicitHeight: 20
+                color: "lightblue"
+                border.color:  "black"
 
-             }
-         }
-     }
+                Rectangle {
+                    x: (parent.width - width) / 2
+                    y: (parent.height - height) / 2
+                    width: parent.width / 3
+                    height: 2
+                    color: "black"
+                }
+                Rectangle {
+                    x: (parent.width - width) / 2
+                    y: (parent.height - height) / 2
+                    width: 2
+                    height: parent.width / 3
+                    color: "black"
+                }
+            }
 
-
-}
-
+        }
 
 
 Text {
-    id: slt
-    text: qsTr("t_pr=" + (1-sliderTnT.value).toFixed(2))
-    anchors.right: sliderReckt.right
-    anchors.verticalCenter: slT.verticalCenter
+    id: ttprimPjesmarrja
+    text: qsTr("t_prim = " + (1- parseFloat(spinBoxValue.text)).toFixed(2))
+    anchors.left: tprimPjesmarrja.left
+    anchors.top: tprimPjesmarrja.bottom
+    anchors.topMargin: 3
     font.pixelSize: topRect.height*0.6
 }
 
@@ -390,7 +393,7 @@ Text {
             anchors.right: parent.right
             anchors.rightMargin: 5
 
-            anchors.top: sliderReckt.bottom
+            anchors.top: ttprimPjesmarrja.bottom
             anchors.topMargin: topRect.height/2
         }
 
@@ -531,6 +534,8 @@ Text {
 
                     onClicked: {
 
+                        console.log(vrimaLartesia.value)
+
                         var tolerancaTnPrim = 0;
                         var tolerancaTPrim = 0;
                         var tolerancaT = 0;
@@ -543,11 +548,11 @@ Text {
 
                         tolerancaTnPrim = hMaxInput.text - hMinInput.text; console.log("TnPrim: ",tolerancaTnPrim)
 
-
-                        tolerancaTPrim = sliderTnT.value*tolerancaTnPrim; console.log("TPrim: ",tolerancaTPrim)
+                        tolerancaTPrim = ((vrimaLartesia.value)/100)*tolerancaTnPrim; console.log("TPrim: ",tolerancaTPrim)
 
                         cilesiaVrima = Tabela2_1JS.cilesiaFushesToleruese( diametriNominalInput.text,
                                                                            tolerancaTPrim); console.log("cil vri: ",cilesiaVrima)
+
                         tolerancaT = Tabela2_1JS.getTolerancen(cilesiaVrima,diametriNominalInput.text); console.log("T: ",tolerancaT)
 
 
@@ -572,14 +577,23 @@ Text {
                         var es = Tabela2_4JS.esGetShkronjen(esKufiriPoshtem, esKUfiriEperm,
                                                           diametriNominalInput.text);
 
-                        var llojiVendosjes = function(){
+                        function vendosjeSTPPB (){
                             if(stppbRadioButton.checked){
-                            llojiVendosjes = "H"
-                        } else llojiVendosjes = "J" }
+                            return "H";
+                        }
+                            else return "";
+                        }
+
+                        function vendosjeSTPPJ (){
+                            if(stppjRadioButton.checked){
+                            return "h";
+                        }
+                            else return "";
+                        }
 
 
-                        vendosjaDisplay.text =diametriNominalInput.text + llojiVendosjes
-                        +cilesiaVrima +" / "+es+cilesiaAksi;
+                        vendosjaDisplay.text =diametriNominalInput.text + vendosjeSTPPB()
+                        +cilesiaVrima +" / "+ vendosjeSTPPJ + es + cilesiaAksi;
 
 
 
