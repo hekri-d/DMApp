@@ -2,7 +2,7 @@ import QtQuick 2.4
 import QtQuick.Window 2.2
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Controls 1.2
-import QtQuick.Layouts 1.1
+//import QtQuick.Layouts 1.1
 
 Window {
     id: root
@@ -12,7 +12,7 @@ Window {
 
     color: "grey"
 
-/A bit buckt/github script test test
+//A bit buckt/github script test test
     property bool mouseAreas: true;
 
     Component {
@@ -33,14 +33,6 @@ StackView {
         Grid {
             id: gridi
             columns: 1
-//            spacing: .9
-//            anchors.right: parent.right
-//            anchors.rightMargin: 7
-//            anchors.left: parent.left
-//            anchors.leftMargin: 5
-//            anchors.top: parent.top
-//            anchors.topMargin: 5
-//            anchors.bottom: parent.bottom
             anchors.fill: parent
 
             Rectangle {
@@ -65,6 +57,9 @@ StackView {
                     color: "steelblue"
                 }
 
+
+
+
                 MouseArea {
                     id: mous
                     anchors.fill: parent
@@ -72,11 +67,7 @@ StackView {
 
 
                     onClicked: {
-//                        loader.setSource("Vendosjet.qml")
-
                         mainStack.push(vcompz)
-
-
 
                     }
                 }
