@@ -4,8 +4,6 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Controls 1.2
 //import QtQuick.Layouts 1.1
 
-//test test test
-
 
 Window {
     id: root
@@ -16,7 +14,6 @@ Window {
     color: "grey"
 
 
-    property bool mouseAreas: true;
 
     Component {
         id: vcompz
