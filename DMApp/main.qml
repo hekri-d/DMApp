@@ -14,12 +14,6 @@ Window {
     color: "grey"
 
 
-    Rectangle {
-        color: "blue"
-        anchors.fill: parent
-        anchors.margins: 5
-    }
-
     Component {
         id: vcompz
 
