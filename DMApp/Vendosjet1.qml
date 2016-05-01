@@ -579,7 +579,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     Text { font.pixelSize: topRect.height*0.6
         id: permasatKufitare
-        text: qsTr("Permasat Kufitare")
+        text: qsTr("Përmasat Kufitare")
         anchors.left: tolerancat.left
         anchors.top: vleraT.bottom
         anchors.topMargin: 5
@@ -608,7 +608,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     Text { font.pixelSize: topRect.height*0.6
         id: diametriDeVlerat
-        text: "fuck the cups"
+        text: ""
         anchors.left: diametriDe.right
         anchors.leftMargin: 10
         anchors.verticalCenter: diametriDe.verticalCenter
@@ -637,7 +637,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     Text { font.pixelSize: topRect.height*0.6
         id: diametriDpVlera
-        text: "fuck the cups"
+        text: ""
         anchors.left: diametriDp.right
         anchors.leftMargin: 10
         anchors.verticalCenter: diametriDp.verticalCenter
@@ -671,7 +671,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     Text { font.pixelSize: topRect.height*0.6
         id: diametrideVlerat
-        text: "fuck the cups"
+        text: ""
         anchors.left: diametride.right
         anchors.leftMargin: 10
         anchors.verticalCenter: diametride.verticalCenter
@@ -700,7 +700,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     Text { font.pixelSize: topRect.height*0.6
         id: diametridpVlera
-        text: "fuck the cups"
+        text: ""
         anchors.left: diametridp.right
         anchors.leftMargin: 10
         anchors.verticalCenter: diametridp.verticalCenter
@@ -784,16 +784,18 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
     Text { font.pixelSize: topRect.height*0.6
         id: dDv
-        text: qsTr("Dv: permiresohet")
-        anchors.left: hapesiraHeNjesia.right
-        anchors.leftMargin: 20
+        text: qsTr("Dv: ... ")
+
+        anchors.right: parent.right
+        anchors.rightMargin: topRect.width/10
         anchors.verticalCenter: hapesiraHeNjesia.verticalCenter
     }
 
     Text { font.pixelSize: topRect.height*0.6
         id: ddv
-        text: qsTr("dv: e keqe")
-        anchors.left: dDv.left
+        text: qsTr("dv: ... ")
+        anchors.right: parent.right
+        anchors.rightMargin: topRect.width/10
         anchors.verticalCenter: hapesiraHpVlera.verticalCenter
     }
 
@@ -985,7 +987,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                         function shmangia_ei () {
 
                             if(aksiShkronja.currentIndex <= 7){
-                                 console.log("ei eshte: ",ei);
+//                                 console.log("ei eshte: ",ei);
 
                                 return ei = Tabela2_4JS.getDeviationAxis(diametriVendosjes.value,
                                                                          aksiShkronja.currentIndex,
@@ -1000,7 +1002,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                                 ei = Tabela2_4JS.getDeviationAxis(diametriVendosjes.value,
                                                                     aksiShkronja.currentIndex,
                                                                     aksiLartesia.currentIndex);
-                                console.log("ei eshte asdf: ",ei);
+//                                console.log("ei eshte asdf: ",ei);
 
                                 return ei
 
@@ -1019,16 +1021,24 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                         dDv.text = diamtratVerteteVrima()
 
                         function diamtratVerteteVrima() {
-                            if( diametriDvInput.text <= parseFloat(diametriDeVlerat.text) && diametriDvInput.text >=parseFloat(diametriDpVlera.text) ){
-                                return "Dv - per. e mire"
+
+                            if( diametriDvInput.text == "" ) {
+                                return "";
                             }
 
-                            else if(diametriDvInput.text >= parseFloat(diametriDeVlerat.text)  ){
-                                    return "Dv - per. e keqe"
-                            }
+                            else {
 
-                            else if(diametriDvInput.text < parseFloat(diametriDpVlera.text)  ){
-                                    return "Dv - Permiresohet"
+                                if( diametriDvInput.text <= parseFloat(diametriDeVlerat.text) && diametriDvInput.text >=parseFloat(diametriDpVlera.text) ){
+                                    return "Dv - për. e mirë"
+                                }
+
+                                else if(diametriDvInput.text >= parseFloat(diametriDeVlerat.text)  ){
+                                    return "Dv - për. e keqe"
+                                }
+
+                                else if(diametriDvInput.text < parseFloat(diametriDpVlera.text)  ){
+                                    return "Dv - përmirësohet"
+                                }
                             }
                         }
 
@@ -1036,16 +1046,24 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                         ddv.text = diametratVertetAksi()
 
                         function diametratVertetAksi(){
-                            if( diametridvInput.text <= parseFloat(diametrideVlerat.text) && diametridvInput.text >=parseFloat(diametridpVlera.text) ){
-                                return "dv - per. e Mire"
+
+                            if( diametridvInput.text == "" ) {
+                                return "";
                             }
 
-                            else if(diametridvInput.text >= parseFloat(diametrideVlerat.text)  ){
-                                    return "dv - permiresohet"
-                            }
+                            else {
 
-                            else if(diametridvInput.text < parseFloat(diametridpVlera.text)  ){
-                                    return "dv - per. e keqe"
+                                if( diametridvInput.text <= parseFloat(diametrideVlerat.text) && diametridvInput.text >=parseFloat(diametridpVlera.text) ){
+                                    return "Dv - për. e mirë"
+                                }
+
+                                else if(diametridvInput.text >= parseFloat(diametrideVlerat.text)  ){
+                                    return "dv - përmirësohet"
+                                }
+
+                                else if(diametridvInput.text < parseFloat(diametridpVlera.text)  ){
+                                    return "dv - për. e keqe"
+                                }
                             }
                         }
 

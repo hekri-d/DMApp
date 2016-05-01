@@ -208,15 +208,8 @@ Rectangle {
         ListModel {
             id: detyra1
 
-            ListElement { name: "DETYRA 1"; facts: "Është dhën vendosja. Duhet të gjinden shmangiet, përmasat kufitare, hapësirat/interferenca, kontrollohen përmasat e vërteta, etj.";  }
+            ListElement { name: "DETYRA 1"; facts: "Është dhënë vendosja. Duhet të gjinden shmangiet, përmasat kufitare, hapësirat/interferenca, kontrollohen përmasat e vërteta, etj.";  }
         }
-
-
-
-
-
-
-
 
 
     }
