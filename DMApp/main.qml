@@ -8,12 +8,17 @@ import QtQuick.Controls 1.2
 Window {
     id: root
     visible: true
-    width: 340
-    height: 460
+    width: Screen.width
+    height: Screen.height
 
     color: "grey"
 
 
+    Rectangle {
+        color: "blue"
+        anchors.fill: parent
+        anchors.margins: 5
+    }
 
     Component {
         id: vcompz
@@ -27,7 +32,7 @@ StackView {
 
     initialItem: Item {
         id: ajtemi
-//        anchors.fill: parent
+        anchors.fill: parent
 
 
         Grid {
@@ -63,7 +68,7 @@ StackView {
                 MouseArea {
                     id: mous
                     anchors.fill: parent
-                    enabled: mouseAreas
+                    //enabled: mouseAreas
 
 
                     onClicked: {
@@ -97,7 +102,7 @@ StackView {
 
                 MouseArea {
                     anchors.fill: parent
-                    enabled: mouseAreas
+                    //enabled: mouseAreas
                 }
             }
 
@@ -209,7 +214,7 @@ StackView {
 
                 MouseArea {
                     anchors.fill: parent
-                    enabled: mouseAreas
+                    //enabled: mouseAreas
 
                     onClicked: loader.setSource("Tabela8-14.qml")
                 }
@@ -238,7 +243,7 @@ StackView {
 
                 MouseArea {
                     anchors.fill: parent
-                    enabled: mouseAreas
+                    //enabled: mouseAreas
 
                     onClicked: loader.setSource("Tabela8-14.qml")
                 }
@@ -267,7 +272,7 @@ StackView {
 
                 MouseArea {
                     anchors.fill: parent
-                    enabled: mouseAreas
+                    //enabled: mouseAreas
 
                     onClicked: loader.setSource("Tabela8-14.qml")
                 }

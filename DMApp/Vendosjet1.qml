@@ -1,7 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.3
-import QtQuick.Window 2.0
+import QtQuick.Window 2.2
 import QtQuick.Layouts 1.1
 
 import "js/Tabela21.js" as Tabela2_1JS
@@ -11,6 +11,11 @@ import "js/Tabela24.js" as Tabela2_4JS
 Rectangle {
     id:vendosjet1
     color: "teal"
+//    width: root.width
+//    height: root.height
+    width: Screen.width
+    height: Screen.height
+
 
     Rectangle {
         id: topRect
@@ -402,7 +407,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         id: diametriDv
         text: qsTr("Diametri Dv: ")
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: topRect.width/50
         anchors.top: aksiLartesia.bottom
         anchors.topMargin: 20
     }
@@ -433,7 +438,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         id: diametriDvNjesia
         text: qsTr("mm")
         anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.rightMargin: topRect.width/50
         anchors.verticalCenter: diametriDvInput.verticalCenter
         width: 40
     }
@@ -442,8 +447,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     Text { font.pixelSize: topRect.height*0.6
         id: diametridv
         text: qsTr("Diametri dv: ")
-        anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.left: diametriDv.left
         anchors.top: diametriDv.bottom
         anchors.topMargin: 10
     }
@@ -472,8 +476,8 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     Text { font.pixelSize: topRect.height*0.6
         id: diametridvNjesia
         text: qsTr("mm")
-        anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.right: diametriDvNjesia.right
+//        anchors.rightMargin: -topRect.width/10
         anchors.verticalCenter: diametridvInput.verticalCenter
         width: 40
     }
@@ -500,11 +504,12 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
-    Text { font.pixelSize: topRect.height*0.6
+    Text {
+        font.pixelSize: topRect.height*0.6
         id: tolerancat
         text: qsTr("Tolerancat(mikrometra):")
-        anchors.left: parent.left
-        anchors.leftMargin: 20
+        anchors.left: diametridv.left
+//        anchors.leftMargin: 20
 
         anchors.top: vijaNdarese.bottom
         anchors.topMargin: 5
@@ -620,8 +625,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     Text { font.pixelSize: topRect.height*0.6
         id: diametriDeNjesia
         text: qsTr("mm")
-        anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.right: diametridvNjesia.right
         anchors.verticalCenter: diametriDeVlerat.verticalCenter
         width: 40
     }
@@ -649,8 +653,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     Text { font.pixelSize: topRect.height*0.6
         id: diametriDpNjesia
         text: qsTr("mm")
-        anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.right: diametriDeNjesia.right
         anchors.verticalCenter: diametriDp.verticalCenter
         width: 40
     }
@@ -683,8 +686,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     Text { font.pixelSize: topRect.height*0.6
         id: diametrideNjesia
         text: qsTr("mm")
-        anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.right: diametriDpNjesia.right
         anchors.verticalCenter: diametrideVlerat.verticalCenter
         width: 40
     }
@@ -712,8 +714,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
     Text { font.pixelSize: topRect.height*0.6
         id: diametridpNjesia
         text: qsTr("mm")
-        anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.right: diametriDpNjesia.right
         anchors.verticalCenter: diametridp.verticalCenter
         width: 40
     }
@@ -1102,7 +1103,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                 border.width: 3
                 radius: 5
                 Image {
-                    source: "qrc:/images/exit.svg"
+                    source: "qrc:/images/exit.png"
                     anchors.fill: parent
                     anchors.topMargin: 10
                     anchors.bottomMargin: 10

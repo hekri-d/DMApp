@@ -8,6 +8,9 @@ Rectangle {
     id: vendosjet
     color: "#2b2b2b"
 
+    width: Screen.width
+    height: Screen.height
+
 
 
 /*  ================= TOGGLE ARROWS ============= */
@@ -23,8 +26,8 @@ Rectangle {
 
     Item {
         id: item1
-        width: parent.width
-        height: parent.height
+        width: Screen.width
+        height: Screen.height
 
 
 
