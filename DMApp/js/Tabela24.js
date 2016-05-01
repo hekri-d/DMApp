@@ -50,10 +50,10 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
 
     var es_ei = 234234;
 
-    /*                  a                 b                 c                 d    */
+    /*              a                 b                 c                 d    */
     if (shkronja ===0 || shkronja === 1 || shkronja === 2 || shkronja === 3 ||
 
-            /*                       e                 f                 g                 h */
+            /*           e                 f                 g                 h */
             shkronja === 4 || shkronja === 5 || shkronja === 6 || shkronja === 7){
 
         if(diametri >1 && diametri <=3 ){
@@ -76,7 +76,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
             es_ei = tabela2_4[shkronja][4]
         }
 
-        else if(diametri >=18 && diametri < 24){
+        else if(diametri >=18 && diametri <= 24){
             es_ei = tabela2_4[shkronja][5]
         }
         else if(diametri > 24 && diametri <= 30){
@@ -123,7 +123,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
             es_ei = tabela2_4[shkronja][18]
         }
         else if(diametri > 250 && diametri <= 280){
-            es_ei = tabela2_4[shkronja][19]                         //gabim - shkronja prej 20 (...[shkronja][20])
+            es_ei = tabela2_4[shkronja][19]
         }
 
         else if(diametri > 280 && diametri <= 315){
@@ -145,12 +145,12 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
 
     }
 
-    /*                        j                                     */
+    /*                    j                                     */
     else if (shkronja === 8 ){
 
         if (cilesia === 5 || cilesia === 6 ){
 
-            if(diametri >1 && diametri <=3 ){
+            if(diametri > 1 && diametri <= 3 ){
                 es_ei = tabela2_4[8][0]
             }
 
@@ -340,7 +340,7 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
     else if(shkronja === 9){
 
         if (cilesia === 5 || cilesia === 6 || cilesia === 7) {
-            if(diametri >1 && diametri <=3 ){
+            if(diametri >1 && diametri <= 3 ){
                 es_ei = tabela2_4[21][0]
             }
 
@@ -1745,23 +1745,11 @@ function getDeviationAxis(diametri, shkronja, cilesia) {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    if(shkronja<=8)
+    if(shkronja <= 8)
         es_ei = es_ei *(-1);
 
     console.log("es_ei returned from tabela2_4 eshte: ", es_ei)
-    //    console.log(es_ei.toString())
+
 
     return es_ei/1000;
 }
@@ -1804,14 +1792,11 @@ function esGetShkronjen (esKufiriPoshtem, esKurifiriEperm, diametriNominal ) {
     console.log("kufirieprem funksioni", esKurifiriEperm)
 
     while (i <= 7) {
-        if(tabela2_4[i][diam] >= esKufiriPoshtem &&
-                tabela2_4[i][diam] <= esKurifiriEperm ) {
+        if(tabela2_4[i][diam] >= esKufiriPoshtem && tabela2_4[i][diam] <= esKurifiriEperm ) {
 
             rreshti = i;
             console.log("rreshit mrena while eshte: ",rreshti)
             break;
-
-
         }
 
         console.log(" vlera tabela: ",tabela2_4[i][diam])
