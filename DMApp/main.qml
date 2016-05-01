@@ -12,8 +12,7 @@ Window {
 
     color: "grey"
 
-//A bit buckt/github script test test
-    property bool mouseAreas: true;
+
 
     Component {
         id: vcompz
