@@ -72,6 +72,7 @@ var tabela2_5 = [[270, 270, 280, 290, 290, 300, 300, 310, 320, 340, 360, 380, 41
 
 //cilesia -->vrimaLartesia.currentIndex
 
+//fix it. Shkronjat duhet te rregullohen dhe te vazhdohen deri ne fund.
 function getDeviationHole(diametri, shkronja, cilesia) {
 
     var es_ei = 0;
@@ -542,7 +543,7 @@ function getDeviationHole(diametri, shkronja, cilesia) {
     if (cilesia > 24)
         es_ei = es_ei *(-1);
 
-    console.log(es_ei)
+    console.log("es_ei from 25 eshte: ", es_ei);
 
     return es_ei/1000;
 }
