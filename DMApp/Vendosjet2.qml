@@ -2,8 +2,9 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
+import QtQuick.Controls 2.0 as Labz
 
-import Qt.labs.controls 1.0 as Labz
+//import Qt.labs.controls 1.0 as Labz
 
 import "js/Tabela21.js" as Tabela2_1JS
 import "js/Tabela24.js" as Tabela2_4JS
@@ -593,7 +594,7 @@ Text {
 
 
                         vendosjaDisplay.text =diametriNominalInput.text + vendosjeSTPPB()
-                        +cilesiaVrima +" / "+ vendosjeSTPPJ + es + cilesiaAksi;
+                        +cilesiaVrima +" / "+ vendosjeSTPPJ() + es + cilesiaAksi;
 
 
 

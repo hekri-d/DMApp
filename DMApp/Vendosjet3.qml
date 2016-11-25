@@ -3,7 +3,8 @@ import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.3
 import QtQuick.Layouts 1.1
 
-import Qt.labs.controls 1.0 as Labz
+import QtQuick.Controls 2.0 as Labz
+//import Qt.labs.controls 1.0 as Labz
 
 import "js/Tabela21.js" as Tabela2_1JS
 import "js/Tabela25.js" as Tabela2_5JS
