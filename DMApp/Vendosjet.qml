@@ -26,8 +26,10 @@ Rectangle {
 
     Item {
         id: item1
-        width: Screen.width
-        height: Screen.height
+        anchors.right: parent.right
+        anchors.left: parent.left
+        height: parent.height
+
 
 
 

@@ -26,7 +26,7 @@ StackView {
 
     initialItem: Item {
         id: ajtemi
-        anchors.fill: parent
+//        anchors.fill: parent
 
 
         Grid {

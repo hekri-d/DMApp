@@ -98,7 +98,7 @@ Rectangle {
 
 
         style: ComboBoxStyle {
-            font.pixelSize: 44 // te behet dinamik ashtuqe te i pershtatet madhesise se ekranit.
+            font.pixelSize: topRect.height*0.58
             background: Rectangle {
                 color: "lightblue"
 
@@ -232,6 +232,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         onCurrentIndexChanged: kufizimiCilesiseVrimaSignal()
 
         style: ComboBoxStyle {
+            font.pixelSize: topRect.height*0.58
             background: Rectangle {
                 color: "lightblue"
             }
@@ -265,6 +266,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         onCurrentIndexChanged: kufizimiCilesiseAksiSignal()
 
         style: ComboBoxStyle {
+            font.pixelSize: topRect.height*0.58
             background: Rectangle {
                 color: "lightblue"
             }
@@ -394,6 +396,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         onCurrentIndexChanged: kufizimiCilesiseAksiSignal()
 
         style: ComboBoxStyle {
+            font.pixelSize: topRect.height*0.58
             background: Rectangle {
                 color: "lightblue"
             }
