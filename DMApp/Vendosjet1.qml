@@ -91,14 +91,18 @@ Rectangle {
         anchors.verticalCenter: diametriVendosjes.verticalCenter
         width: topRect.width/7.5
         height: topRect.height
+
         model: ["A","B","C","D","E","F","G","H","J","K","M","N","P","R","S","T","U","V","X","Y","Z","ZA","ZB","ZC"]
 
         onCurrentIndexChanged: kufizimiCilesiseVrimaSignal()
 
 
         style: ComboBoxStyle {
+            font.pixelSize: 44 // te behet dinamik ashtuqe te i pershtatet madhesise se ekranit.
             background: Rectangle {
                 color: "lightblue"
+
+
             }
         }
     }
@@ -438,7 +442,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
         id: diametriDvNjesia
         text: qsTr("mm")
         anchors.right: parent.right
-        anchors.rightMargin: topRect.width/50
+        anchors.rightMargin: topRect.width/25
         anchors.verticalCenter: diametriDvInput.verticalCenter
         width: 40
     }
@@ -1103,7 +1107,7 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                 border.width: 3
                 radius: 5
                 Image {
-                    source: "qrc:/images/exit.png"
+                    source: "qrc:/images/exit.svg"
                     anchors.fill: parent
                     anchors.topMargin: 10
                     anchors.bottomMargin: 10

@@ -5,5 +5,6 @@
         <file>images/lefta-rrow.png</file>
         <file>images/ok.png</file>
         <file>images/phi.png</file>
+        <file>images/exit.svg</file>
     </qresource>
 </RCC>
