@@ -286,7 +286,7 @@ Item {
         }
 
 
-/*  Teksti nga ana e majte e slider-it T */
+/*  Teksti nga ana e majte e spinBoxit T */
 
         Text {
             id: tprimPjesmarrja
@@ -339,6 +339,7 @@ Item {
                     id: spinBoxValue
                     anchors.centerIn: parent
                     text: vrimaLartesia.value/100
+                    font.pixelSize: topRect.height*0.58
                 }
 
             }

@@ -296,6 +296,7 @@ Item {
                     id: spinBoxValue
                     anchors.centerIn: parent
                     text: vrimaLartesia.value/100
+                    font.pixelSize: topRect.height*0.58
                 }
 
             }
@@ -366,6 +367,7 @@ ComboBox {
     model: 19
 
     style: ComboBoxStyle {
+        font.pixelSize: topRect.height*0.58
         background: Rectangle {
             color: "lightblue"
         }
@@ -396,6 +398,7 @@ ComboBox {
     model: 19
 
     style: ComboBoxStyle {
+        font.pixelSize: topRect.height*0.58
         background: Rectangle {
             color: "lightblue"
         }

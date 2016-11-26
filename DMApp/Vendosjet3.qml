@@ -286,88 +286,91 @@ Item {
         }
 
 
-/*  Teksti nga ana e majte e slider-it T */
-
-        Text {
-            id: tprimPjesmarrja
-            text: qsTr("T_prim=")
-            anchors.left: vendosjaRadioButtonsGroupBox.right
-            anchors.leftMargin: 20
-//            anchors.top: diametriNominalInput.bottom
-            anchors.top: pjesemarrjaTolerancave.bottom
-            anchors.topMargin: 5
-
-            font.pixelSize: topRect.height*0.6
-
-        }
-
-
-        Labz.SpinBox {
-            id: vrimaLartesia
-            anchors.top: tprimPjesmarrja.top
-            anchors.left: tprimPjesmarrja.right
-            anchors.leftMargin: 10
-            width: topRect.width/3; height: topRect.height/1.2
-            value: 50
-            from: 50; to: 60; stepSize: 1
-
-
-            down.indicator: Rectangle {
-                  height: parent.height
-                  implicitWidth: 25
-                  implicitHeight: 20
-                  color: "lightblue"
-                  border.color:  "black"
-
-                  Rectangle {
-                      x: (parent.width - width) / 2
-                      y: (parent.height - height) / 2
-                      width: parent.width / 3
-                      height: 2
-                      color: "black"
-//                      color: control.enabled ? "#353637" : "#bdbebf"
-                  }
-              }
-
-            contentItem: Rectangle {
-
-                anchors.fill: parent
-                color: "lightblue"
-                border.color:  "black"
+        /*  Teksti nga ana e majte e spinBoxit T */
 
                 Text {
-                    id: spinBoxValue
-                    anchors.centerIn: parent
-                    text: vrimaLartesia.value/100
+                    id: tprimPjesmarrja
+                    text: qsTr("T_prim=")
+                    anchors.left: vendosjaRadioButtonsGroupBox.right
+                    anchors.leftMargin: 20
+        //            anchors.top: diametriNominalInput.bottom
+                    anchors.top: pjesemarrjaTolerancave.bottom
+                    anchors.topMargin: 5
+
+                    font.pixelSize: topRect.height*0.6
+
                 }
 
-            }
 
-            up.indicator: Rectangle {
-                height: parent.height
-                anchors.right: parent.right
-                implicitWidth: 25
-                implicitHeight: 20
-                color: "lightblue"
-                border.color:  "black"
+                Labz.SpinBox {
+                    id: vrimaLartesia
+                    anchors.top: tprimPjesmarrja.top
+                    anchors.left: tprimPjesmarrja.right
+                    anchors.leftMargin: 10
+                    width: topRect.width/3; height: topRect.height/1.2
+                    value: 50
+                    from: 50; to: 60; stepSize: 1
 
-                Rectangle {
-                    x: (parent.width - width) / 2
-                    y: (parent.height - height) / 2
-                    width: parent.width / 3
-                    height: 2
-                    color: "black"
+                    down.indicator: Rectangle {
+                          height: parent.height
+                          implicitWidth: 25
+                          implicitHeight: 20
+                          color: "lightblue"
+                          border.color:  "black"
+
+                          Rectangle {
+                              x: (parent.width - width) / 2
+                              y: (parent.height - height) / 2
+                              width: parent.width / 3
+                              height: 2
+                              color: "black"
+        //                      color: control.enabled ? "#353637" : "#bdbebf"
+                          }
+                      }
+
+                    contentItem: Rectangle {
+
+                        anchors.fill: parent
+                        color: "lightblue"
+                        border.color:  "black"
+
+                        Text {
+                            id: spinBoxValue
+                            anchors.centerIn: parent
+                            text: vrimaLartesia.value/100
+                            font.pixelSize: topRect.height*0.58
+                        }
+
+                    }
+
+                    up.indicator: Rectangle {
+                        height: parent.height
+                        anchors.right: parent.right
+                        implicitWidth: 25
+                        implicitHeight: 20
+                        color: "lightblue"
+                        border.color:  "black"
+
+                        Rectangle {
+                            x: (parent.width - width) / 2
+                            y: (parent.height - height) / 2
+                            width: parent.width / 3
+                            height: 2
+                            color: "black"
+                        }
+                        Rectangle {
+                            x: (parent.width - width) / 2
+                            y: (parent.height - height) / 2
+                            width: 2
+                            height: parent.width / 3
+                            color: "black"
+                        }
+                    }
+
                 }
-                Rectangle {
-                    x: (parent.width - width) / 2
-                    y: (parent.height - height) / 2
-                    width: 2
-                    height: parent.width / 3
-                    color: "black"
-                }
-            }
 
-        }
+
+
 
 
 Text {
