@@ -56,6 +56,18 @@ Rectangle {
                     color: "#333"
                     border.color: Qt.lighter(color, 1.2)
 
+                    MouseArea {
+                        id: enter1
+
+                        anchors.fill: namesRect1
+
+                        onClicked: {
+
+                            mainStack.push(v1comp)
+                        }
+                    }
+
+
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
@@ -86,20 +98,6 @@ Rectangle {
 
 
                     }
-
-
-                    MouseArea {
-                        id: enter1
-
-                        anchors.fill: rightz1
-
-                        onClicked: {
-
-                            mainStack.push(v1comp)
-                        }
-                    }
-
-
 
 
 
@@ -305,6 +303,18 @@ Rectangle {
                     color: "#333"
                     border.color: Qt.lighter(color, 1.2)
 
+                    MouseArea {
+                        id: enter2
+                        anchors.fill: namesRect2
+                        onClicked: {
+                            mainStack.push(v2comp)
+
+
+                        }
+                    }
+
+
+
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
@@ -332,15 +342,15 @@ Rectangle {
                     }
 
 
-                    MouseArea {
-                        id: enter2
-                        anchors.fill: rightz2
-                        onClicked: {
-                            mainStack.push(v2comp)
+//                    MouseArea {
+//                        id: enter2
+//                        anchors.fill: rightz2
+//                        onClicked: {
+//                            mainStack.push(v2comp)
 
 
-                        }
-                    }
+//                        }
+//                    }
 
 
 
@@ -523,6 +533,18 @@ Rectangle {
                     color: "#333"
                     border.color: Qt.lighter(color, 1.2)
 
+
+                    MouseArea {
+                        id: enter3
+                        anchors.fill: namesRect3
+                        onClicked: {
+                            mainStack.push(v3comp)
+
+
+                        }
+                    }
+
+
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
@@ -550,15 +572,15 @@ Rectangle {
                     }
 
 
-                    MouseArea {
-                        id: enter3
-                        anchors.fill: rightz3
-                        onClicked: {
-                            mainStack.push(v3comp)
+//                    MouseArea {
+//                        id: enter3
+//                        anchors.fill: rightz3
+//                        onClicked: {
+//                            mainStack.push(v3comp)
 
 
-                        }
-                    }
+//                        }
+//                    }
 
 
 
@@ -745,6 +767,16 @@ Rectangle {
                     color: "#333"
                     border.color: Qt.lighter(color, 1.2)
 
+                    MouseArea {
+                        id: enter4
+                        anchors.fill: namesRect4
+                        onClicked: {
+                            mainStack.push(v4comp)
+
+
+                        }
+                    }
+
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
@@ -772,15 +804,15 @@ Rectangle {
                     }
 
 
-                    MouseArea {
-                        id: enter4
-                        anchors.fill: rightz4
-                        onClicked: {
-                            mainStack.push(v4comp)
+//                    MouseArea {
+//                        id: enter4
+//                        anchors.fill: rightz4
+//                        onClicked: {
+//                            mainStack.push(v4comp)
 
 
-                        }
-                    }
+//                        }
+//                    }
 
 
 

@@ -69,23 +69,23 @@ function cilesiaFushesToleruese (diametri, T_tPaPershtatur ){
 
     var diam = parseFloat(diametri);
 
-    if (diam<=3) { diam = 0;}
-    else if(diam >6 && diam <=10) { diam = 2; }
-    else if(diam >10 && diam <=18) { diam = 3; }
-    else if(diam >18 && diam <=30) { diam = 4; }
-    else if(diam >30 && diam <=50) { diam = 5; }
-    else if(diam >50 && diam <=80) { diam = 6; }
-    else if(diam >80 && diam <=120) { diam = 7; }
-    else if(diam >120 && diam <=180) { diam = 8; }
-    else if(diam >180 && diam <=250) { diam = 9; }
-    else if(diam >250 && diam <=315) { diam = 10; }
-    else if(diam >315 && diam <=400) { diam = 11; }
-    else if(diam >400 && diam <=500) { diam = 12; }
+    if (diam <= 3) { diam = 0;}
+    else if(diam > 6 && diam <= 10) { diam = 2; }
+    else if(diam > 10 && diam <= 18) { diam = 3; }
+    else if(diam > 18 && diam <= 30) { diam = 4; }
+    else if(diam > 30 && diam <= 50) { diam = 5; }
+    else if(diam > 50 && diam <= 80) { diam = 6; }
+    else if(diam > 80 && diam <= 120) { diam = 7; }
+    else if(diam > 120 && diam <= 180) { diam = 8; }
+    else if(diam > 180 && diam <= 250) { diam = 9; }
+    else if(diam > 250 && diam <= 315) { diam = 10; }
+    else if(diam > 315 && diam <= 400) { diam = 11; }
+    else if(diam > 400 && diam <= 500) { diam = 12; }
 
 
-    var i=19;
+    var i = 19;
 
-    while (i>=0) {
+    while (i >= 0) {
 
 
             if(tabela2_1[i][diam] <= T_tPaPershtatur ) {

@@ -8,6 +8,7 @@ import QtQuick.Controls 2.0 as Labz
 
 import "js/Tabela21.js" as Tabela2_1JS
 import "js/Tabela24.js" as Tabela2_4JS
+import "js/Tabela25.js" as Tabela2_5JS
 
 Item {
 
@@ -572,30 +573,26 @@ Text {
                         /* vlerat kufitare per es */
 
                         var esKufiriPoshtem = hMinInput.text;
-                        var esKUfiriEperm = hMaxInput.text - (tolerancaT+tolerancat);
+                        var esKufiriEperm = hMaxInput.text - (tolerancaT+tolerancat);
 
-                        console.log(esKufiriPoshtem); console.log(esKUfiriEperm)
+                        console.log(esKufiriPoshtem); console.log(esKufiriEperm)
 
-                        var es = Tabela2_4JS.esGetShkronjen(esKufiriPoshtem, esKUfiriEperm,
+                        var es = Tabela2_4JS.esGetShkronjen(esKufiriPoshtem, esKufiriEperm,
                                                           diametriNominalInput.text);
 
-                        function vendosjeSTPPB (){
-                            if(stppbRadioButton.checked){
-                            return "H";
-                        }
-                            else return "";
-                        }
-
-                        function vendosjeSTPPJ (){
-                            if(stppjRadioButton.checked){
-                            return "h";
-                        }
-                            else return "";
-                        }
+                        var ES = Tabela2_5JS.eSGetShkronjen(esKufiriPoshtem, esKufiriEperm, diametriNominalInput.text);
 
 
-                        vendosjaDisplay.text =diametriNominalInput.text + vendosjeSTPPB()
-                        +cilesiaVrima +" / "+ vendosjeSTPPJ() + es + cilesiaAksi;
+
+                        /* Display vendosjen */
+
+                        if (stppbRadioButton.checked) {
+                            vendosjaDisplay.text = diametriNominalInput.text + "H" + cilesiaVrima + " / " + es + cilesiaAksi;
+                        }
+
+                        else if (stppjRadioButton.checked){
+                            vendosjaDisplay.text = diametriNominalInput.text + ES + cilesiaVrima + " / " + "h" + cilesiaAksi;
+                        }
 
 
 
