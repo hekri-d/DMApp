@@ -20,6 +20,12 @@ Window {
         Vendosjet{}
     }
 
+    Component {
+        id: bcompz
+
+        Bulonat{}
+    }
+
 StackView {
     id: mainStack
     anchors.fill: parent
@@ -124,7 +130,7 @@ StackView {
                 MouseArea {
                     anchors.fill: parent
 
-                    //onClicked:
+                    onClicked: mainStack.push(bcompz)
                 }
             }
 

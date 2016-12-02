@@ -6,5 +6,7 @@
         <file>Vendosjet2.qml</file>
         <file>Vendosjet3.qml</file>
         <file>Vendosjet4.qml</file>
+        <file>Bulonat.qml</file>
+        <file>Bulonat1.qml</file>
     </qresource>
 </RCC>
