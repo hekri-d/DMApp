@@ -16,6 +16,14 @@ Rectangle {
     width: Screen.width
     height: Screen.height
 
+    Loader {
+        id: loader      /*loads windows diagramet */
+        active: false
+        anchors.fill: parent
+        source: "Diagramet.qml"
+    }
+
+
 
     Rectangle {
         id: topRect
@@ -887,12 +895,15 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
 
 
 
+
             Rectangle {
                 id: llogaritButton
                 color: "lightblue"
                 Layout.preferredHeight: parent.height
                 Layout.preferredWidth: parent.width/4
-                anchors.verticalCenter: parent.verticalCenter
+//                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: diagrametButton.left
+                anchors.leftMargin: 20
 
                 border.color: "black"
                 border.width: 3
@@ -1097,6 +1108,39 @@ P.sh. nuk lejon qe ne UI te shfaqet J4 sepse lartesia minimale per J eshte 6 */
                 }
             }
 
+
+            Rectangle {
+                id: diagrametButton
+                color: "lightblue"
+                Layout.preferredHeight: parent.height
+                Layout.preferredWidth: parent.width/4
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: mbyllButton.left
+                anchors.rightMargin:24
+                border.color: "black"
+                border.width: 3
+                radius: 5
+                Image {
+                    source: "qrc:/images/exit.svg"
+                    anchors.fill: parent
+                    anchors.topMargin: 10
+                    anchors.bottomMargin: 10
+                    fillMode: Image.PreserveAspectFit
+                }
+                MouseArea {
+                    anchors.fill: parent
+
+                    onClicked: {
+
+                        if (loader.active == true){
+                            loader.active = false;
+                        }
+
+                        loader.active = true
+                    }
+
+                }
+            }
 
             Rectangle {
                 id: mbyllButton

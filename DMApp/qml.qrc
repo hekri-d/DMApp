@@ -8,5 +8,6 @@
         <file>Vendosjet4.qml</file>
         <file>Bulonat.qml</file>
         <file>Bulonat1.qml</file>
+        <file>Diagramet.qml</file>
     </qresource>
 </RCC>
