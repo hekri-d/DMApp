@@ -11,7 +11,8 @@ Item {
     anchors.fill: parent
     Window {
         id: diagrametVendosjes
-        width: 800; height:700;
+//        width: 800; height:700;
+        width: Screen.width/1.2; height: Screen.height/1.2
         visible: true
         title: "Vendosjet"
 
@@ -117,77 +118,110 @@ Item {
         Component.onCompleted: { shmangiaES(); shmangiaEI(); shmangia_ei(); shmangia_es() }    /*functions called */
 
 
+        property string diametriFromDisplay: diametriVendosjes.value
+
+
         Canvas {
             id: diagCanvas
             anchors.fill: parent
 
             onPaint: {
-                //                function diagVendosjes (){
-
-                var ctx = diagCanvas.getContext("2d")
-
-                ctx.lineWidth = 2
-                ctx.strokeStyle = "red"
-                //        ctx.fillStyle = "lblue"
-
-                ctx.beginPath();
-
-                //                    var i = 60, j = 60;
-
-                //                    for ( i = 60; i < 200; i+=8 ){
-                //                        ctx.moveTo(i, j);
-                //                        ctx.lineTo(i, j + 60);
-                //                    }
-
-
-                //                    ctx.moveTo(60,60);
-                //                    ctx.lineTo(60,120);
-                //                    ctx.lineTo(200, 120);
-                //                    ctx.lineTo(200, 60)
-                //                    ctx.closePath();
-
-
-
-                //                }
-
 
                 var vijaZero = parent.height/2;
-                var vijaVertikale = parent.width/4
+                var vijaVertikale = parent.width/6
 
-                ctx.moveTo(100, vijaZero);
-                ctx.lineTo(parent.width, vijaZero);
 
-                ctx.moveTo(vijaVertikale + 200, vijaZero + 1000*diagrametVendosjes.eEI);
-                ctx.lineTo(vijaVertikale + 400, vijaZero + 1000*diagrametVendosjes.eEI);
-                ctx.lineTo(vijaVertikale + 400, vijaZero + 1000*diagrametVendosjes.eES);
-                ctx.lineTo(vijaVertikale + 200, vijaZero + 1000*diagrametVendosjes.eES);
-//                ctx.lineTo(vijaVertikale, vijaZero + diagrametVendosjes.eEI);
-                ctx.closePath();
+                var sisKoordinativ = diagCanvas.getContext("2d")
 
-//                ctx.moveTo(300, 300);
-//                ctx.lineTo(600, 300);
-//                ctx.lineTo(600, 100)
-//                ctx.lineTo(300, 100)
-//                ctx.lineTo(300, 300)
+                sisKoordinativ.lineWidth = 2
+                sisKoordinativ.strokeStyle = "black"
 
-                ctx.stroke();
+                sisKoordinativ.beginPath();
+/* x */
+                sisKoordinativ.moveTo(100, vijaZero);
+                sisKoordinativ.lineTo(parent.width-100, vijaZero);
+                sisKoordinativ.lineTo(parent.width-120, vijaZero + 7);
+                sisKoordinativ.moveTo(parent.width-100, vijaZero);
+                sisKoordinativ.lineTo(parent.width-120, vijaZero - 7);
 
-                console.log("It motherfucking is: ", Math.abs(diagrametVendosjes.eEI));
 
-                console.log("vijazer: ", vijaZero);
-                console.log("vijaVertika: ", vijaVertikale);
-                console.log("vijazero plus diagrametei: ", (vijaZero + diagrametVendosjes.eEI))
+/* y */
+                sisKoordinativ.moveTo(vijaVertikale, vijaZero + 200);
+                sisKoordinativ.lineTo(vijaVertikale, 100);
+                sisKoordinativ.lineTo(vijaVertikale + 7, 120);
+                sisKoordinativ.moveTo(vijaVertikale, 100);
+                sisKoordinativ.lineTo(vijaVertikale - 7, 120);
+
+                sisKoordinativ.stroke();
+
+
+
+                var tolVrimes = diagCanvas.getContext("2d");
+
+                tolVrimes.lineWidth = 4;
+                tolVrimes.strokeStyle = "black";
+
+                tolVrimes.strokeRect(vijaVertikale + 50, Math.abs(diagrametVendosjes.eEI) < 1.51 ? vijaZero -1200*diagrametVendosjes.eEI : vijaZero -12*diagrametVendosjes.eEI, 150, -150);
+
+
+                var tolVrimesHatch = diagCanvas.getContext("2d");
+
+                tolVrimesHatch.lineWidth = 1;
+                tolVrimesHatch.strokeStyle = "black";
+
+                tolVrimesHatch.beginPath();
+
+                for (var i = 0; i < 150; i += 8){
+
+                    tolVrimesHatch.moveTo(vijaVertikale +50 + i, (Math.abs(diagrametVendosjes.eEI) < 1.51 ? vijaZero -1200*diagrametVendosjes.eEI : vijaZero -12*diagrametVendosjes.eEI)  );
+                    tolVrimesHatch.lineTo(vijaVertikale + 50 + i, ( (Math.abs(diagrametVendosjes.eEI) < 1.51 ? vijaZero -1200*diagrametVendosjes.eEI : vijaZero -12*diagrametVendosjes.eEI) - 150) );
+
+                }
+
+                tolVrimesHatch.stroke();
+
+
+                var tekst = diagCanvas.getContext("2d")
+                tekst.font = "40px sans-serif";
+                tekst.strokeText( diagrametVendosjes.diametriFromDisplay , vijaVertikale + 50 +150/2, vijaZero-150/2);
+
+
+
+                var tolAksit = diagCanvas.getContext("2d")
+
+                tolAksit.lineWidth = 4
+                tolAksit.strokeStyle = "black"
+
+                tolAksit.strokeRect(vijaVertikale + 450, Math.abs(diagrametVendosjes.es) < 1.51 ? vijaZero -1200*diagrametVendosjes.es : vijaZero -12*diagrametVendosjes.es, 150, 150)
+
+
+                var tolAksitHatch = diagCanvas.getContext("2d");
+
+                tolAksitHatch.lineWidth = 1;
+                tolAksitHatch.strokeStyle = "black";
+
+                tolAksitHatch.beginPath();
+
+                for (var j = 0; j < 150; j += 8){
+
+                    tolAksitHatch.moveTo(vijaVertikale + 450 + j, (Math.abs(diagrametVendosjes.es) < 1.51 ? vijaZero -1200*diagrametVendosjes.es : vijaZero -12*diagrametVendosjes.es)  );
+                    tolAksitHatch.lineTo(vijaVertikale + 450 + j, ( (Math.abs(diagrametVendosjes.es) < 1.51 ? vijaZero -1200*diagrametVendosjes.es : vijaZero -12*diagrametVendosjes.es) + 150) );
+
+                }
+
+                tolAksitHatch.stroke();
+
             }
         }
     }
 
 
 
-    Window {
-        id: diagrametTolerancesVendosjes
-        width: 800; height:700;
-        visible: true
-    }
+//    Window {
+//        id: diagrametTolerancesVendosjes
+//        width: 800; height:700;
+//        visible: true
+//    }
 
 
 }

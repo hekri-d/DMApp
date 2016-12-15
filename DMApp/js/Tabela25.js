@@ -543,7 +543,7 @@ function getDeviationHole(diametri, shkronja, cilesia) {
     if (cilesia > 24)
         es_ei = es_ei *(-1);
 
-    console.log("es_ei from 25 eshte: ", es_ei);
+
 
     return es_ei/1000;
 }
@@ -557,7 +557,6 @@ function eSGetShkronjen (ESKufiriPoshtem, ESKurifiriEperm, diametriNominal ) {
 
     var diam = parseFloat(diametriNominal);
 
-    console.log("diametri nominal",diam)
 
     if (diam<=3) { diam = 0;}
     else if(diam >6 && diam <=10) { diam = 2; }
@@ -572,7 +571,7 @@ function eSGetShkronjen (ESKufiriPoshtem, ESKurifiriEperm, diametriNominal ) {
     else if(diam >315 && diam <=400) { diam = 11; }
     else if(diam >400 && diam <=500) { diam = 12; }
 
-        console.log("diam",diam)
+
     diam =13;
 
     var rreshti = 0;             /* rreshti nga tabela. E percakton shkronjen */
@@ -583,25 +582,23 @@ function eSGetShkronjen (ESKufiriPoshtem, ESKurifiriEperm, diametriNominal ) {
 
                                 /* i  > 7 - vlerat ES ne tabele. Para ketyre jane ato EI. */
 
-    console.log("kufiriposhtem funksioni",ESKufiriPoshtem);
-    console.log("kufirieprem funksioni", ESKurifiriEperm)
 
     while (i > 7) {
         if(tabela2_5[i][diam] >= ESKufiriPoshtem &&
                 tabela2_5[i][diam] <= ESKurifiriEperm ) {
 
             rreshti = i;
-            console.log("rreshit mrena while eshte: ",rreshti)
+
             break;
 
 
         }
 
-        console.log(" vlera tabela: ",tabela2_5[i][diam])
+
         i--;
 
-        console.log("rreshit eshte: ",rreshti);
-        console.log(" i eshte: ",i)
+
+
 
 
     }
