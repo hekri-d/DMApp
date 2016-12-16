@@ -147,10 +147,10 @@ Item {
 
 /* y */
                 sisKoordinativ.moveTo(vijaVertikale, vijaZero + 200);
-                sisKoordinativ.lineTo(vijaVertikale, 100);
-                sisKoordinativ.lineTo(vijaVertikale + 7, 120);
-                sisKoordinativ.moveTo(vijaVertikale, 100);
-                sisKoordinativ.lineTo(vijaVertikale - 7, 120);
+                sisKoordinativ.lineTo(vijaVertikale, 50);
+                sisKoordinativ.lineTo(vijaVertikale + 7, 80);
+                sisKoordinativ.moveTo(vijaVertikale, 50);
+                sisKoordinativ.lineTo(vijaVertikale - 7, 80);
 
                 sisKoordinativ.stroke();
 
@@ -161,7 +161,10 @@ Item {
                 tolVrimes.lineWidth = 4;
                 tolVrimes.strokeStyle = "black";
 
-                tolVrimes.strokeRect(vijaVertikale + 50, Math.abs(diagrametVendosjes.eEI) < 1.51 ? vijaZero -1200*diagrametVendosjes.eEI : vijaZero -12*diagrametVendosjes.eEI, 150, -150);
+
+                var EIMAX = diagrametVendosjes.eEI  > 0.135 ? vijaZero -1900*0.135 : (vijaZero -1800*diagrametVendosjes.eEI)
+
+                tolVrimes.strokeRect(vijaVertikale + 50, EIMAX, 150, -150);
 
 
                 var tolVrimesHatch = diagCanvas.getContext("2d");
@@ -192,7 +195,8 @@ Item {
                 tolAksit.lineWidth = 4
                 tolAksit.strokeStyle = "black"
 
-                tolAksit.strokeRect(vijaVertikale + 450, Math.abs(diagrametVendosjes.es) < 1.51 ? vijaZero -1200*diagrametVendosjes.es : vijaZero -12*diagrametVendosjes.es, 150, 150)
+
+                tolAksit.strokeRect(vijaVertikale + 450,  Math.abs(diagrametVendosjes.es) < 1.51 ? vijaZero -1200*diagrametVendosjes.es : vijaZero -12*diagrametVendosjes.es, 150, 150)
 
 
                 var tolAksitHatch = diagCanvas.getContext("2d");
@@ -210,6 +214,9 @@ Item {
                 }
 
                 tolAksitHatch.stroke();
+
+                console.log(diagrametVendosjes.eEI)
+                console.log(diagrametVendosjes.es)
 
             }
         }
