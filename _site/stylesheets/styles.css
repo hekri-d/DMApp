@@ -604,7 +604,7 @@ a:hover {
 
 .btn {
   font-size: 14px;
-  color: #000;
+  color: #fff;
   background-color: #8bc34a;
   border: 1px solid #92c755;
   border-radius: 2px;
@@ -730,20 +730,24 @@ dt {
   overflow: hidden;
 }
 #header .nav {
-  float: left;
+  float: right;
   padding: 0;
   margin: 0;
 }
 #header .nav .download-title {
   display: inline-block;
-  line-height: 36px;
+  line-height: 136px;
   font-size: 12px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
-  margin-right: 15px;
 }
 #header .nav li {
   display: inline-block;
+}
+
+#my-section {
+	float: left; /*<!-- this was me --> */
+
 }
 
 section {
